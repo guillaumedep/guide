@@ -1,7 +1,8 @@
 {
   "id": "quiche-poireaux",
   "title": "Quiche aux poireaux",
-  "cat": "vegetarien",
+  "cat": "plat",
+  "sous": ["vegetarien"],
   "emoji": "🥧",
   "image": null,
   "tags": ["Quiche", "Au four"],
@@ -65,7 +66,6 @@
     }
   ],
   "notes": [
-    "Source d’origine non indiquée dans le PDF, qui est daté du 4 novembre 2020.",
     "Le PDF annonce 55 minutes au total, ce qui paraît juste : 20 min de poireaux à la poêle plus 30 à 35 min de four font déjà 50 à 55 min, sans la préparation de la pâte.",
     "La pâte n’est pas précuite : elle est garnie directement puis enfournée.",
     "Crème fraîche ou crème végétale au choix, d’après le PDF.",

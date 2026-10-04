@@ -40,8 +40,8 @@
   color-scheme:dark;
 }
 /* Couleur par catégorie */
-.cat-viande{--cat:var(--red)} .cat-poisson{--cat:var(--blue)} .cat-vegetarien{--cat:var(--green)}
-.cat-entree{--cat:var(--yellow)} .cat-accompagnement{--cat:var(--purple)} .cat-dessert{--cat:var(--pink)} .cat-all{--cat:var(--orange)}
+.cat-cocktail{--cat:var(--blue)} .cat-entree{--cat:var(--yellow)} .cat-plat{--cat:var(--red)}
+.cat-accompagnement{--cat:var(--purple)} .cat-snack{--cat:var(--orange)} .cat-dessert{--cat:var(--pink)} .cat-all{--cat:var(--green)}
 
 html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 80px);-webkit-text-size-adjust:100%}
 *,*::before,*::after{box-sizing:border-box}
@@ -324,3 +324,50 @@ ul.ings{list-style:none;padding:0;margin:0}
 .mtxt{display:block;font-size:.84rem;font-weight:700;color:var(--muted);margin-top:4px;line-height:1.4}
 @media (min-width:900px){ .tip-grid{grid-template-columns:repeat(4,1fr)} .tips-page,.frigo{max-width:760px} }
 @media (prefers-reduced-motion:reduce){ .tip-card,.frigo-cta{transition:none} .sugg summary::before{transition:none} }
+
+/* ---------- Accueil par catégories ---------- */
+.chips a.chip{text-decoration:none}
+.chips .chip{background:var(--cat);color:#1b1720}
+.chips .chip .c{background:#1b1720;color:#fff}
+.cat-sec{margin-top:30px}
+.cat-band{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;text-decoration:none;color:#1b1720;
+  background:var(--cat);border:var(--b) solid var(--line);box-shadow:4px 4px 0 var(--shadow);border-radius:14px;padding:8px 16px;transform:rotate(-.8deg);margin-bottom:14px
+}
+.cat-band h2{font-size:1.4rem;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.cat-band h2 .jp{font-size:.85rem;background:#1b1720;color:#fff;padding:2px 8px;border-radius:7px;letter-spacing:.06em}
+.cat-band h2 .c{font-family:var(--text);font-weight:800;font-size:.9rem;background:#fff;color:#1b1720;border:2px solid #1b1720;border-radius:999px;min-width:28px;height:28px;display:inline-grid;place-items:center;padding:0 7px}
+.cat-band .go{font-family:var(--display);font-size:1.8rem}
+.cat-band:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--shadow)}
+.mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.mini{
+  display:flex;flex-direction:column;gap:6px;padding:8px 8px 10px;text-decoration:none;color:inherit;background:var(--card);
+  border:var(--b) solid var(--line);border-radius:var(--r);box-shadow:4px 4px 0 var(--shadow);transition:transform .12s ease,box-shadow .12s ease
+}
+.mini:nth-child(odd){transform:rotate(-.6deg)} .mini:nth-child(even){transform:rotate(.6deg)}
+.mini:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--shadow)}
+.mimg{display:grid;place-items:center;aspect-ratio:1/1;border-radius:12px;overflow:hidden;border:var(--b) solid var(--line);font-size:2.6rem}
+.mimg img{width:100%;height:100%;object-fit:cover;display:block}
+.mt{font-family:var(--display);font-size:.95rem;line-height:1.25}
+.mini .pill{width:fit-content;font-size:.72rem}
+.see-all{
+  display:flex;align-items:center;justify-content:center;min-height:48px;margin-top:14px;padding:0 16px;border-radius:999px;text-decoration:none;
+  background:var(--card);color:var(--ink);border:var(--b) solid var(--line);box-shadow:3px 3px 0 var(--shadow);font-weight:800
+}
+.see-all:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--shadow)}
+.empty.small{margin:0;padding:16px;font-size:.92rem}
+.empty.small::before{font-size:1.2rem}
+
+/* ---------- Page de catégorie ---------- */
+.cat-title{background:var(--cat);color:#1b1720;border:var(--b) solid var(--line);box-shadow:5px 5px 0 var(--shadow);border-radius:16px;padding:10px 18px;transform:rotate(-1deg);width:fit-content}
+.cat-title .jp{background:#1b1720!important;color:#fff!important}
+.cat-page .search{margin-bottom:6px}
+.facets{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 6px}
+.facets .chip[aria-pressed="true"]{background:var(--cat)}
+.facets .chip.quick[aria-pressed="true"]{background:var(--green)}
+.count-line{font-weight:800;color:var(--muted);margin:14px 2px 4px}
+@media (min-width:900px){
+  .mini-grid{grid-template-columns:repeat(4,1fr)}
+  .home-cats{display:block}
+}
+@media (prefers-reduced-motion:reduce){ .mini,.see-all,.cat-band{transition:none} }

@@ -1,13 +1,22 @@
-// Calcul des quantités. Logique reprise telle quelle du prototype (bloc PURE de prototype/recettes.html).
+// Catégories et calcul des quantités. Le calcul est repris tel quel du prototype (bloc PURE de prototype/recettes.html).
 // Toute modification ici doit garder test/scale.test.mjs au vert.
 
+// Catégories, dans l'ordre d'affichage. « facets » : filtres proposés sur la page de la catégorie ;
+// une recette y apparaît si l'id du filtre figure dans son champ « sous ».
 export const CATS = [
-  { id: 'viande', label: 'Viande', emoji: '🥩' },
-  { id: 'poisson', label: 'Poisson', emoji: '🐟' },
-  { id: 'vegetarien', label: 'Végétarien', emoji: '🥬' },
-  { id: 'entree', label: 'Entrée', emoji: '🥗' },
-  { id: 'accompagnement', label: 'Accompagnement', emoji: '🍚' },
-  { id: 'dessert', label: 'Dessert', emoji: '🍰' }
+  { id: 'cocktail', label: 'Cocktail', emoji: '🍹', facets: [
+    { id: 'avec-alcool', label: 'Avec alcool' }, { id: 'sans-alcool', label: 'Sans alcool' }] },
+  { id: 'entree', label: 'Entrée', emoji: '🥗', facets: [
+    { id: 'salade', label: 'Salade' }, { id: 'viande', label: 'Viande' }, { id: 'poisson', label: 'Poisson' }, { id: 'vegetarien', label: 'Végétarien' }] },
+  { id: 'plat', label: 'Plat', emoji: '🍲', facets: [
+    { id: 'boeuf', label: 'Bœuf' }, { id: 'porc', label: 'Porc' }, { id: 'veau', label: 'Veau' }, { id: 'poulet', label: 'Poulet' },
+    { id: 'poisson', label: 'Poisson' }, { id: 'vegetarien', label: 'Végétarien' }] },
+  { id: 'accompagnement', label: 'Accompagnement', emoji: '🥔', facets: [
+    { id: 'legumes', label: 'Légumes' }, { id: 'legumineuses', label: 'Légumineuses' }, { id: 'feculents', label: 'Féculents' }, { id: 'vegetarien', label: 'Végétarien' }] },
+  { id: 'snack', label: 'Snack', emoji: '🥪', facets: [
+    { id: 'sandwich', label: 'Sandwich' }, { id: 'vegetarien', label: 'Végétarien' }] },
+  { id: 'dessert', label: 'Dessert', emoji: '🍰', facets: [
+    { id: 'chocolat', label: 'Chocolat' }, { id: 'fruits', label: 'Fruits' }, { id: 'gateau', label: 'Gâteau' }] }
 ];
 
 const NF = new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 2 });

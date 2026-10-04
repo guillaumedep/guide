@@ -2,6 +2,7 @@
   "id": "eventail-tomate-mozzarella",
   "title": "Éventail tomate-mozzarella",
   "cat": "entree",
+  "sous": ["vegetarien"],
   "emoji": "🍅",
   "image": null,
   "tags": ["Été", "Sans cuisson", "Végétarien"],

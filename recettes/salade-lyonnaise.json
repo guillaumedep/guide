@@ -2,6 +2,7 @@
   "id": "salade-lyonnaise",
   "title": "Salade lyonnaise",
   "cat": "entree",
+  "sous": ["salade", "viande"],
   "emoji": "🥗",
   "image": null,
   "tags": ["Salade", "Œuf poché"],
@@ -51,7 +52,6 @@
     }
   ],
   "notes": [
-    "Source : fiche Marmiton imprimée.",
     "Un commentaire de la fiche indique que la recette marche aussi avec une feuille de chêne à la place des pissenlits.",
     "Les temps de cuisson ne changent pas automatiquement avec le nombre de personnes."
   ]

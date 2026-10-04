@@ -2,6 +2,7 @@
   "id": "salade-carottes-amandes-thon",
   "title": "Salade de carottes râpées aux amandes et au thon",
   "cat": "entree",
+  "sous": ["salade", "poisson"],
   "emoji": "🥕",
   "image": null,
   "tags": ["Salade", "Sans cuisson"],
@@ -37,7 +38,6 @@
     }
   ],
   "notes": [
-    "Source : fiche Marmiton imprimée.",
     "Le citron figure dans les ingrédients mais la préparation ne dit pas quand l’utiliser."
   ]
 }

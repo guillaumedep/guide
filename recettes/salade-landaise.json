@@ -2,6 +2,7 @@
   "id": "salade-landaise",
   "title": "Salade landaise (la vraie !)",
   "cat": "entree",
+  "sous": ["salade", "viande"],
   "emoji": "🦆",
   "image": null,
   "tags": ["Salade", "Canard", "Foie gras"],
@@ -43,7 +44,6 @@
     }
   ],
   "notes": [
-    "Source : fiche Marmiton imprimée.",
     "La fiche ne précise pas l’assaisonnement.",
     "Les temps de cuisson ne changent pas automatiquement avec le nombre de personnes."
   ]

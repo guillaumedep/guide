@@ -1,7 +1,8 @@
 {
   "id": "quiche-lorraine",
   "title": "Quiche lorraine",
-  "cat": "viande",
+  "cat": "plat",
+  "sous": ["porc"],
   "emoji": "🥓",
   "image": null,
   "tags": ["Quiche", "Au four"],
@@ -47,7 +48,6 @@
     }
   ],
   "notes": [
-    "Source d’origine non indiquée dans le PDF.",
     "Le PDF annonce 45 min de cuisson en en-tête, mais 45 à 50 min dans l’étape : les deux ne concordent pas exactement.",
     "Le PDF ne précise pas si la pâte brisée est maison ou du commerce, ni la taille du moule.",
     "Les temps de cuisson ne changent pas automatiquement avec le nombre de personnes."

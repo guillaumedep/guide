@@ -2,6 +2,7 @@
   "id": "salade-pommes-de-terre-cervelas",
   "title": "Salade tiède de pommes de terre au cervelas",
   "cat": "entree",
+  "sous": ["salade", "viande"],
   "emoji": "🥔",
   "image": null,
   "tags": ["Salade", "Tiède"],
@@ -54,7 +55,6 @@
     }
   ],
   "notes": [
-    "Source : fiche Marmiton imprimée.",
     "Les temps de cuisson ne changent pas automatiquement avec le nombre de personnes."
   ]
 }

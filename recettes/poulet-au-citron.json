@@ -1,7 +1,8 @@
 {
   "id": "poulet-au-citron",
   "title": "Poulet au citron",
-  "cat": "viande",
+  "cat": "plat",
+  "sous": ["poulet"],
   "emoji": "🍋",
   "image": null,
   "tags": ["Poulet", "Cocotte"],
@@ -54,7 +55,6 @@
     }
   ],
   "notes": [
-    "La fiche ne mentionne ni le site ni l’auteur. L’auteur cite d’autres versions qu’il a testées (poulet au citron au Delicook, poulet rôti de Jamie Oliver).",
     "Le sel et le poivre sont listés mais la préparation ne dit pas quand les ajouter.",
     "Les temps de cuisson ne changent pas automatiquement avec le nombre de personnes."
   ]

@@ -2,6 +2,7 @@
   "id": "gratin-courgettes-rapide",
   "title": "Gratin de courgettes rapide",
   "cat": "accompagnement",
+  "sous": ["legumes", "vegetarien"],
   "emoji": "🥒",
   "image": null,
   "tags": ["Gratin", "Végétarien", "Au four"],
@@ -39,7 +40,6 @@
     }
   ],
   "notes": [
-    "Source : fiche Marmiton imprimée.",
     "La recette dit « four chaud » sans donner de température.",
     "Les temps de cuisson ne changent pas automatiquement avec le nombre de personnes."
   ]

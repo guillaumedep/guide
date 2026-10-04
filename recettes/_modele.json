@@ -1,7 +1,8 @@
 {
   "id": "nom-de-la-recette",
   "title": "Nom affiché de la recette",
-  "cat": "vegetarien",
+  "cat": "plat",
+  "sous": ["vegetarien"],
   "emoji": "🍲",
   "image": null,
   "tags": ["Mijoté", "Au four"],
@@ -30,8 +31,14 @@
     }
   ],
   "steps": [
-    { "ph": "Préparation", "items": ["Première étape.", "Deuxième étape."] },
-    { "ph": "Cuisson", "items": ["Enfourner 40 minutes à 180 °C."] }
+    {
+      "ph": "Préparation",
+      "items": ["Première étape.", "Deuxième étape."]
+    },
+    {
+      "ph": "Cuisson",
+      "items": ["Enfourner 40 minutes à 180 °C."]
+    }
   ],
   "notes": [
     "Les temps de cuisson ne changent pas automatiquement avec le nombre de personnes."

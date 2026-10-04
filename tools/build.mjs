@@ -35,6 +35,13 @@ function validate(r, file) {
   else if (file !== r.id + '.json') e(`le nom du fichier doit être « ${r.id}.json »`);
   if (!isStr(r.title)) e('« title » manquant');
   if (!catIds.includes(r.cat)) e(`« cat » doit valoir ${catIds.map(c => `"${c}"`).join(', ')} (reçu ${JSON.stringify(r.cat)})`);
+  const cat = CATS.find(c => c.id === r.cat);
+  if (r.sous !== undefined) {
+    if (!Array.isArray(r.sous)) e('« sous » doit être une liste, ex. ["poulet"]');
+    else if (cat) for (const x of r.sous) if (!cat.facets.some(f => f.id === x))
+      e(`« sous » : "${x}" n’existe pas pour la catégorie ${cat.label} (possibles : ${cat.facets.map(f => `"${f.id}"`).join(', ')})`);
+  }
+  if (r.vedette !== undefined && typeof r.vedette !== 'boolean') e('« vedette » doit valoir true ou false');
   if (!Number.isInteger(r.base) || r.base < 1 || r.base > 24) e('« base » doit être un nombre entier de personnes entre 1 et 24');
   if (r.image != null && !isStr(r.image)) e('« image » doit être null ou un nom de fichier du dossier images/');
   for (const k of ['tags', 'times', 'groups', 'steps', 'notes']) if (r[k] !== undefined && !Array.isArray(r[k])) e(`« ${k} » doit être une liste [ … ]`);

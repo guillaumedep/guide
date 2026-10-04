@@ -1,7 +1,8 @@
 {
   "id": "ragu-boeuf-effiloche",
   "title": "Ragù de bœuf effiloché et pasta maison",
-  "cat": "viande",
+  "cat": "plat",
+  "sous": ["boeuf"],
   "emoji": "🍝",
   "image": null,
   "tags": ["Pâtes", "Mijoté", "Au four"],
@@ -100,7 +101,6 @@
     }
   ],
   "notes": [
-    "Source : vidéo de Hugo. Le texte vient d’une transcription automatique très bruitée, les étapes sont reformulées. Les ingrédients viennent de la capture d’écran. À recouper avec la vidéo en cas de doute.",
     "Le moment exact où l’ail est ajouté n’est pas clair dans le transcript : je l’ai mis avec les légumes.",
     "Le transcript ne donne ni temps de cuisson précis des pâtes, ni consigne de salage de l’eau.",
     "Les temps de cuisson ne changent pas automatiquement avec le nombre de personnes. Si tu augmentes fortement les quantités, adapte la taille de la cocotte."
