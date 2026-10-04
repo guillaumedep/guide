@@ -17,7 +17,7 @@ const CHECK_ONLY = process.argv.includes('--check');
 const IMG_EXT = ['.jpg', '.jpeg', '.png', '.webp', '.avif'];
 // Réglages de compression (modifier ici change toutes les images au prochain build).
 const HERO = { width: 1200, quality: 72 };   // grande image : largeur max en px, qualité WebP
-const THUMB = { size: 216, quality: 70 };    // vignette carrée (72 px affichés × 3 pour les écrans Retina)
+const THUMB = { size: 216, quality: 70, position: 'centre' }; // vignette carrée (72 px × 3 pour Retina), recadrée au centre
 
 const errors = [];
 const err = (file, msg) => errors.push(`${file} : ${msg}`);
@@ -114,7 +114,7 @@ for (const r of recipes) {
     const heroName = `img/${r.id}-${h}.webp`, thumbName = `img/${r.id}-${h}-v.webp`;
     const img = sharp(input).rotate();   // .rotate() applique l'orientation EXIF
     await img.clone().resize({ width: HERO.width, withoutEnlargement: true }).webp({ quality: HERO.quality }).toFile(join(DIST, heroName));
-    await img.clone().resize(THUMB.size, THUMB.size, { fit: 'cover', position: 'attention' }).webp({ quality: THUMB.quality }).toFile(join(DIST, thumbName));
+    await img.clone().resize(THUMB.size, THUMB.size, { fit: 'cover', position: THUMB.position }).webp({ quality: THUMB.quality }).toFile(join(DIST, thumbName));
     out.image = heroName; out.thumb = thumbName;
     images.push(heroName, thumbName);
     console.log(`🖼️  ${src} (${kb(input.length)}) → ${kb(statSync(join(DIST, heroName)).size)} + vignette ${kb(statSync(join(DIST, thumbName)).size)}`);

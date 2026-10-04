@@ -255,9 +255,11 @@ start();
 
 /* ---------- Hors ligne et mises à jour (service worker) ---------- */
 if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+  // Recharger seulement lors d'une mise à jour, pas à la toute première installation.
+  const hadController = !!navigator.serviceWorker.controller;
   let reloading = false;
   navigator.serviceWorker.addEventListener('controllerchange', () => {
-    if (reloading) return; reloading = true; location.reload();
+    if (!hadController || reloading) return; reloading = true; location.reload();
   });
   navigator.serviceWorker.register('sw.js').then(reg => {
     const offer = w => {
