@@ -88,6 +88,24 @@ for (const f of imgFiles) {
   if (!recipes.some(r => r.id === base || r.image === f)) console.warn(`⚠️  images/${f} ne correspond à aucune recette (nommer le fichier <id-de-la-recette>.jpg)`);
 }
 
+/* ---------- Astuces de cuisine (src/data/astuces.json) ---------- */
+const TIPS_FILE = join(SRC, 'data', 'astuces.json');
+if (existsSync(TIPS_FILE)) {
+  const e = msg => errors.push('../src/data/astuces.json : ' + msg);
+  try {
+    const { themes } = JSON.parse(readFileSync(TIPS_FILE, 'utf8'));
+    if (!Array.isArray(themes) || !themes.length) e('« themes » doit être une liste non vide');
+    else themes.forEach((th, i) => {
+      if (!isStr(th.id) || !isStr(th.t)) e(`themes[${i}] : « id » et « t » (titre) obligatoires`);
+      if (!Array.isArray(th.items) || !th.items.length) e(`themes[${i}] : liste « items » vide`);
+      else th.items.forEach((it, j) => {
+        if (!isStr(it.t)) e(`themes[${i}].items[${j}] : titre « t » manquant`);
+        if (!isStr(it.p) && !(Array.isArray(it.li) && it.li.length)) e(`themes[${i}].items[${j}] : il faut un texte « p » ou une liste « li »`);
+      });
+    });
+  } catch (x) { e('JSON invalide — ' + x.message); }
+}
+
 if (errors.length) {
   console.error(`\n❌ ${errors.length} erreur(s) dans les recettes :\n` + errors.map(e => '  - recettes/' + e).join('\n') + '\n');
   process.exit(1);

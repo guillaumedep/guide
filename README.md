@@ -83,6 +83,14 @@ Les fichiers dont le nom commence par `_` sont ignorés.
 
 Ces règles sont dans `src/js/scale.js`. `npm test` vérifie qu'elles donnent exactement les mêmes résultats que le prototype (`prototype/recettes.html`) pour chaque ingrédient, de 1 à 24 personnes, et que les données des 3 recettes migrées sont identiques à celles du prototype.
 
+## Astuces de cuisine
+
+Les astuces sont dans `src/data/astuces.json` : 4 thèmes (`themes`), chacun avec un `id`, un titre `t`, un `emoji`, une couleur `color` (`yellow`, `red`, `green`, `blue`) et ses `items`. Chaque astuce a un titre `t` et soit un texte `p`, soit une liste `li`. La numérotation est continue d'un thème à l'autre. Le fichier est vérifié à la publication, comme les recettes.
+
+## « Qu'est-ce que je peux cuisiner ? »
+
+On saisit les ingrédients disponibles ; l'appli compare avec les ingrédients des recettes (accents, majuscules et pluriels simples ignorés). Ne comptent ni les ingrédients « au goût » (`fixed`) ni les facultatifs. Option « placard de base » : sel, poivre, huile, beurre, eau, farine, sucre considérés comme disponibles. Classement : recettes faisables tout de suite, puis celles qui utilisent le plus d'ingrédients saisis, puis celles où il manque le moins. Logique dans `src/js/frigo.js`, testée dans `test/frigo.test.mjs`. Limite : la correspondance est mot à mot (« fromage » ne trouve pas « cheddar »).
+
 ## Développement
 
     npm install       # une fois (installe sharp, pour les images)
