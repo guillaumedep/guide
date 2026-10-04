@@ -17,7 +17,14 @@ test('catégories identiques au prototype', () => {
 
 test('recettes issues du prototype inchangées', () => {
   const byId = Object.fromEntries(recipes.map(r => [r.id, r]));
-  for (const r of P.RECIPES) assert.deepEqual(byId[r.id], JSON.parse(JSON.stringify(r)), r.id);
+  for (const r of P.RECIPES) {
+    // Les notes « À savoir » peuvent être allégées (retrait des mentions de source, à ta demande) ;
+    // tout le reste doit rester identique, et chaque note restante doit venir du prototype.
+    const { notes, ...rest } = byId[r.id];
+    const { notes: pNotes, ...pRest } = JSON.parse(JSON.stringify(r));
+    assert.deepEqual(rest, pRest, r.id);
+    for (const n of notes) assert.ok(pNotes.includes(n), `${r.id} : note absente du prototype « ${n} »`);
+  }
 });
 
 test('scaleItem identique au prototype, pour chaque ingrédient et 1 à 24 personnes', () => {
