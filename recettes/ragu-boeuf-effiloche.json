@@ -1,0 +1,108 @@
+{
+  "id": "ragu-boeuf-effiloche",
+  "title": "Ragù de bœuf effiloché et pasta maison",
+  "cat": "viande",
+  "emoji": "🍝",
+  "image": null,
+  "tags": ["Pâtes", "Mijoté", "Au four"],
+  "source": "Vidéo de Hugo",
+  "base": 4,
+  "baseNote": "Le nombre de personnes n’est pas précisé dans la source : base de 4 supposée, à confirmer.",
+  "total": "≈ 4 h 30",
+  "times": [
+    { "l": "Four", "v": "3 h 30 minimum" },
+    { "l": "Repos de la pâte", "v": "35 min à 1 h" },
+    { "l": "Pétrissage", "v": "≈ 10 min" },
+    { "l": "Durée évoquée", "v": "≈ 4 h 30" }
+  ],
+  "groups": [
+    {
+      "t": "Le ragù",
+      "items": [
+        { "id": "b1", "n": "plat de côtes de bœuf", "qty": 1200, "u": "g" },
+        { "id": "b2", "n": "nduja", "qty": 30, "u": "g", "opt": true },
+        { "id": "b3", "n": "tomates en conserve", "qty": 150, "u": "g", "warn": "Unité absente de la capture. Le transcript parle d’environ 150 g (avec un « 100 g maximum » peu clair). À vérifier." },
+        { "id": "b4", "n": "oignon", "np": "oignons", "qty": 1 },
+        { "id": "b5", "n": "carotte", "np": "carottes", "qty": 1 },
+        { "id": "b6", "n": "branche de céleri", "np": "branches de céleri", "qty": 2, "r": "w" },
+        { "id": "b7", "n": "fenouil", "qty": 0.5 },
+        { "id": "b8", "n": "gousse d’ail", "np": "gousses d’ail", "qty": 2, "r": "w" },
+        { "id": "b9", "n": "concentré de tomate", "qty": 1, "u": "càs" },
+        { "id": "b10", "n": "vin rouge", "qty": 25, "u": "cl" },
+        { "id": "b11", "n": "bouillon de bœuf (ou de volaille)", "qty": 70, "u": "cl" },
+        { "id": "b12", "n": "feuille de laurier", "np": "feuilles de laurier", "qty": 2, "r": "w" },
+        { "id": "b13", "n": "branche de thym", "np": "branches de thym", "qty": 3, "r": "w" },
+        { "id": "b14", "n": "sel et poivre", "fixed": "au goût" },
+        { "id": "b15", "n": "piment d’Espelette", "fixed": "au goût" },
+        { "id": "b16", "n": "huile d’olive", "fixed": "selon besoin" }
+      ]
+    },
+    {
+      "t": "Les pâtes maison",
+      "opt": true,
+      "note": "Facultatif : des pâtes du commerce fonctionnent très bien, d’après la vidéo.",
+      "items": [
+        { "id": "p1", "n": "farine", "qty": 400, "u": "g" },
+        { "id": "p2", "n": "œufs, pesés", "qty": 200, "u": "g", "hint": "À peser plutôt qu’à compter : dans la vidéo, les œufs font 51 g ou 66 g." },
+        { "id": "p3", "n": "sel", "fixed": "1 pincée" }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "ph": "Mise en place",
+      "items": [
+        "Saler généreusement le plat de côtes sur ses deux faces, en salant de haut pour bien répartir. Réserver pendant la découpe des légumes.",
+        "Tailler en fine brunoise la carotte, l’oignon, le céleri et le fenouil (couper le fenouil en quatre et le mettre à plat pour le tailler).",
+        "Couper l’ail grossièrement : inutile de le râper ou de le presser, il va compoter pendant des heures."
+      ]
+    },
+    {
+      "ph": "Le ragù, dans la cocotte",
+      "items": [
+        "Chauffer la cocotte à feu assez soutenu. Éponger la viande avec du papier absorbant : le sel a fait ressortir de l’humidité, qui ferait bouillir la viande au lieu de la saisir.",
+        "Verser une généreuse rasade d’huile d’olive et marquer la viande sur chaque face jusqu’à belle coloration (le côté de l’os n’est pas forcément nécessaire). Réserver la viande.",
+        "Baisser le feu. Ajouter les légumes et l’ail (un peu d’huile s’il n’y a plus de matière grasse) et les faire confire doucement : oignons translucides, carottes qui commencent à fondre, sans coloration.",
+        "Nduja, si tu en trouves : retirer la peau et l’ajouter avec les légumes, sans la cuire comme une saucisse. Elle rend son gras, qui nourrit les légumes, et relève le tout avec son piment.",
+        "Ajouter le concentré de tomate, bien enrober et laisser accrocher légèrement au fond, 1 à 2 minutes, en surveillant pour que ça ne brûle pas.",
+        "Déglacer au vin rouge en décollant les sucs. Laisser réduire, feu un peu plus fort, jusqu’à ce que le vin devienne sirupeux et qu’on voie le fond de la cocotte en passant la cuillère.",
+        "Ajouter le bouillon, remettre la viande avec son jus de cuisson, et compléter avec de l’eau si besoin pour bien noyer la viande.",
+        "Ajouter les tomates en conserve (le ragù n’est pas une sauce tomate : la viande doit rester bien présente), le laurier et le thym, sans trop de laurier sinon c’est trop puissant. Porter à ébullition, à couvert."
+      ]
+    },
+    {
+      "ph": "Au four",
+      "items": [
+        "Enfourner la cocotte couverte à 130 °C : 3 h 30 au minimum, jusqu’à 5, 6 ou 7 h. En milieu humide et fermé, ça ne peut pas brûler."
+      ]
+    },
+    {
+      "ph": "Les pâtes maison (facultatif)",
+      "items": [
+        "Peser la farine et viser la moitié en poids d’œuf : le taux d’hydratation visé est de 50 à 55 %, soit 50 g d’œuf pour 100 g de farine.",
+        "Sur un plan de travail propre, disposer la farine en fontaine et creuser un puits. Verser les œufs et une pincée de sel, battre à la fourchette, puis incorporer la farine progressivement sans casser le puits.",
+        "Quand la texture est sableuse, avec des morceaux qui se forment, pétrir à la main environ 10 minutes : appuyer avec la paume, replier, tourner, recommencer. Ne pas ajouter d’eau ni de farine : si c’est dur, il faut pétrir plus longtemps.",
+        "Former une boule, l’aplatir un peu, bien filmer et laisser reposer de 35 min à 1 h au frigo.",
+        "Couper la pâte en deux. Passer au laminoir au premier cran, replier les extrémités pour obtenir un rectangle régulier et repasser au premier cran jusqu’à avoir une bande plate. Augmenter ensuite d’un cran à chaque passage, jusqu’au cran 6 (l’auteur évoque aussi le 7), en farinant légèrement entre les passages.",
+        "Fariner la bande, la couper en 3 morceaux à peu près égaux, les enrouler et tailler des pappardelle d’environ 2 cm (de 2 à 5 cm selon l’envie). Fariner légèrement, former des nids et réserver."
+      ]
+    },
+    {
+      "ph": "Finition",
+      "items": [
+        "Sortir la cocotte. Retirer la viande et les os, ainsi que le laurier et le thym. Laisser le bouillon réduire tranquillement pendant ce temps.",
+        "Effilocher la viande à chaud, à la fourchette : le collagène est encore fluide, alors qu’une fois refroidie elle se fige et se travaille moins bien. Arroser d’une louche de bouillon pour la réchauffer et pousser l’effilochage jusqu’à n’avoir presque que des filaments.",
+        "Goûter et rectifier : sel, et piment (d’Espelette si tu n’as pas de nduja). Remettre la viande dans la sauce. La consistance doit être ni trop liquide, ni trop sèche : elle doit enrober les pâtes. Baisser le feu.",
+        "Avant de cuire les pâtes, faire chauffer l’eau et préparer une poêle allumée avec la quantité de ragù voulue. Les pâtes fraîches cuisent très vite : elles commencent à remonter à la surface quand elles sont presque prêtes (minuteur d’1 minute, relancé si besoin).",
+        "Transférer les pâtes à la pince directement dans la poêle avec le ragù, avec un peu d’eau de cuisson pour lier. Ne pas trop les remuer, pour ne pas les casser.",
+        "Dresser dans une assiette idéalement chaude : un nid de pâtes au centre, pour donner du volume, puis napper de ragù avec son jus. Servir bien chaud."
+      ]
+    }
+  ],
+  "notes": [
+    "Source : vidéo de Hugo. Le texte vient d’une transcription automatique très bruitée, les étapes sont reformulées. Les ingrédients viennent de la capture d’écran. À recouper avec la vidéo en cas de doute.",
+    "Le moment exact où l’ail est ajouté n’est pas clair dans le transcript : je l’ai mis avec les légumes.",
+    "Le transcript ne donne ni temps de cuisson précis des pâtes, ni consigne de salage de l’eau.",
+    "Les temps de cuisson ne changent pas automatiquement avec le nombre de personnes. Si tu augmentes fortement les quantités, adapte la taille de la cocotte."
+  ]
+}

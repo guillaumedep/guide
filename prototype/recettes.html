@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mes recettes</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Newsreader:opsz,wght@6..72,400;6..72,600&display=swap">
+<style>
+:root{
+  --bg:#eef1ec; --card:#fbfcfa; --ink:#14213d; --muted:#5d6b85; --line:#d6dcd3;
+  --accent:#2b47c4; --accent-ink:#ffffff; --accent-soft:#dde4fa;
+  --saffron:#f2b134; --saffron-soft:#fbe8be; --ok:#3f7a56; --warn:#b5432e;
+  --display:'Bricolage Grotesque','Avenir Next','Segoe UI',system-ui,sans-serif;
+  --serif:'Newsreader',Georgia,'Times New Roman',serif;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0d1321; --card:#161f35; --ink:#e8edf7; --muted:#9aa7c2; --line:#2a3557;
+    --accent:#8fa6ff; --accent-ink:#0d1321; --accent-soft:#22305c;
+    --saffron:#f2b134; --saffron-soft:#3a3020; --ok:#7cc59a; --warn:#f08a75;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0d1321; --card:#161f35; --ink:#e8edf7; --muted:#9aa7c2; --line:#2a3557;
+  --accent:#8fa6ff; --accent-ink:#0d1321; --accent-soft:#22305c;
+  --saffron:#f2b134; --saffron-soft:#3a3020; --ok:#7cc59a; --warn:#f08a75;
+  color-scheme:dark;
+}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px);-webkit-text-size-adjust:100%}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--display);font-weight:500;font-size:17px;line-height:1.5}
+.app{max-width:680px;margin:0 auto;padding:0 18px 56px}
+h1,h2,h3{font-family:var(--display);margin:0;line-height:1.15;letter-spacing:-.015em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:8px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* Motif faïence : l'élément décoratif unique de la page */
+.tile{
+  background-color:var(--accent-soft);
+  background-image:
+    radial-gradient(circle at 25% 25%, var(--saffron) 0 5px, transparent 6px),
+    radial-gradient(circle at 75% 75%, var(--accent) 0 5px, transparent 6px);
+  background-size:48px 48px;
+}
+
+/* ---------- Sommaire ---------- */
+.top{padding:30px 0 14px}
+.top h1{font-size:2.3rem;font-weight:700}
+.sub{margin:6px 0 18px;color:var(--muted);font-size:.98rem}
+.search input{
+  width:100%;height:50px;border-radius:14px;border:1.5px solid var(--line);
+  background:var(--card);color:var(--ink);padding:0 16px;font:inherit;font-size:1rem;
+}
+.search input::placeholder{color:var(--muted)}
+.chips{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);
+  display:flex;gap:8px;overflow-x:auto;padding:10px 18px;margin:0 -18px;scrollbar-width:none;
+}
+.chips::-webkit-scrollbar{display:none}
+.chip{
+  flex:none;height:42px;padding:0 15px;border-radius:999px;border:1.5px solid var(--line);
+  background:var(--card);color:var(--ink);font:inherit;font-weight:600;font-size:.92rem;cursor:pointer;
+  display:inline-flex;align-items:center;gap:7px;white-space:nowrap;
+}
+.chip .c{color:var(--muted);font-weight:500}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.chip[aria-pressed="true"] .c{color:inherit;opacity:.8}
+.chip.zero{opacity:.55}
+.grp h2{font-size:1.4rem;margin:26px 0 12px;display:flex;align-items:baseline;gap:10px}
+.grp h2 .c{font-size:.9rem;color:var(--muted);font-weight:500}
+.row{
+  display:grid;grid-template-columns:72px 1fr;gap:14px;align-items:center;
+  padding:10px;margin-bottom:10px;background:var(--card);border:1px solid var(--line);
+  border-radius:20px;text-decoration:none;color:inherit;
+}
+.row:active{transform:scale(.99)}
+.thumb{width:72px;height:72px;border-radius:14px;overflow:hidden;display:grid;place-items:center;font-size:2rem;background-size:24px 24px}
+.thumb.tile{background-image:
+  radial-gradient(circle at 25% 25%, var(--saffron) 0 2.5px, transparent 3.2px),
+  radial-gradient(circle at 75% 75%, var(--accent) 0 2.5px, transparent 3.2px)}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.row .t{font-weight:700;font-size:1.06rem;line-height:1.25}
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
+.pill{font-size:.78rem;padding:3px 10px;border-radius:999px;background:var(--accent-soft);font-weight:600}
+.pill.saf{background:var(--saffron-soft)}
+.empty{margin:36px 0;padding:24px;border:1.5px dashed var(--line);border-radius:20px;text-align:center;color:var(--muted)}
+
+/* ---------- Recette ---------- */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding:8px 0}
+.back{display:inline-flex;align-items:center;min-height:44px;padding:0 14px 0 6px;border-radius:12px;color:var(--accent);font-weight:700;text-decoration:none}
+.hero{aspect-ratio:16/10;border-radius:28px;overflow:hidden;position:relative;display:grid;place-items:center;margin-top:4px}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.plate{width:104px;height:104px;border-radius:50%;background:var(--card);display:grid;place-items:center;font-size:3.2rem;box-shadow:0 0 0 7px var(--card),0 0 0 9px var(--line)}
+.hero .cap{position:absolute;left:0;right:0;bottom:10px;text-align:center;font-size:.78rem;color:var(--ink);font-weight:600}
+.hero .cap span{background:var(--card);padding:3px 10px;border-radius:999px}
+.rt{font-size:2rem;font-weight:700;margin:20px 0 10px}
+.times{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:18px 0 0}
+.times div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 13px}
+.times dt{font-size:.8rem;color:var(--muted);font-weight:500}
+.times dd{margin:2px 0 0;font-weight:700}
+section{margin-top:34px}
+.sh{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}
+.sh h2{font-size:1.5rem}
+.link{background:none;border:0;color:var(--accent);font:inherit;font-weight:600;font-size:.9rem;text-decoration:underline;padding:6px 2px;min-height:36px;cursor:pointer}
+
+.stepper{display:flex;align-items:center;justify-content:space-between;background:var(--accent-soft);border-radius:28px;padding:12px}
+.rnd{width:58px;height:58px;border-radius:50%;border:0;background:var(--accent);color:var(--accent-ink);font:inherit;font-weight:700;font-size:1.9rem;line-height:1;cursor:pointer}
+.rnd:disabled{opacity:.35;cursor:default}
+.count{text-align:center}
+.count output{display:block;font-weight:700;font-size:3rem;line-height:1}
+.count span{font-size:.92rem;color:var(--muted)}
+.basenote{font-size:.85rem;color:var(--muted);margin:10px 4px 0}
+
+.gt{font-size:1.08rem;font-weight:700;margin:24px 0 4px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.gnote{font-size:.88rem;color:var(--muted);margin:0 0 4px;font-family:var(--serif);font-size:.98rem}
+ul.ings{list-style:none;padding:0;margin:0}
+.ing{display:grid;grid-template-columns:26px 96px 1fr;gap:10px;align-items:start;padding:12px 4px;border-bottom:1px solid var(--line);cursor:pointer;min-height:50px}
+.box{width:24px;height:24px;border-radius:50%;border:2px solid var(--line);margin-top:1px;display:grid;place-items:center;color:var(--accent-ink)}
+.ing.on .box{background:var(--ok);border-color:var(--ok)}
+.ing.on .box::after{content:"✓";font-size:.8rem;font-weight:700}
+.qty{font-weight:700;font-size:1.12rem;line-height:1.4}
+.qty.fixed{font-weight:500;font-size:.95rem;color:var(--muted);padding-top:2px}
+.nm{line-height:1.4;padding-top:1px}
+.nm small{display:block;color:var(--muted);font-size:.85rem;margin-top:3px;font-weight:500}
+.ing.flag .nm small{color:var(--warn)}
+.tag{font-style:normal;font-size:.74rem;background:var(--saffron-soft);padding:2px 8px;border-radius:999px;margin-left:6px;white-space:nowrap;font-weight:600}
+.ing.on .qty,.ing.on .nm{opacity:.45;text-decoration:line-through}
+.bump .qty{animation:bump .3s ease-out}
+@keyframes bump{from{opacity:.15;transform:translateY(7px)}to{opacity:1;transform:none}}
+
+.ph3{font-size:1.08rem;font-weight:700;margin:26px 0 10px}
+.steps{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.step{display:grid;grid-template-columns:34px 1fr;gap:12px;padding:15px;background:var(--card);border:1px solid var(--line);border-radius:20px;cursor:pointer}
+.step .n{width:32px;height:32px;border-radius:50%;background:var(--accent-soft);display:grid;place-items:center;font-weight:700;font-size:.9rem}
+.step p{margin:0;font-family:var(--serif);font-size:1.08rem;line-height:1.6;font-weight:400}
+.step.done{opacity:.5}
+.step.done .n{background:var(--ok);color:#fff}
+.notes ul{margin:0;padding-left:20px;font-family:var(--serif);font-size:1.05rem;line-height:1.6;font-weight:400;display:grid;gap:8px}
+.foot{margin-top:40px;color:var(--muted);font-size:.85rem}
+@media (prefers-reduced-motion:reduce){.bump .qty{animation:none}.row:active{transform:none}}
+</style>
+</head>
+<body>
+<div class="app" id="app"></div>
+
+<script>
+/*PURE-START*/
+const CATS=[
+  {id:'viande',label:'Viande',emoji:'🥩'},
+  {id:'poisson',label:'Poisson',emoji:'🐟'},
+  {id:'vegetarien',label:'Végétarien',emoji:'🥬'},
+  {id:'entree',label:'Entrée',emoji:'🥗'},
+  {id:'accompagnement',label:'Accompagnement',emoji:'🍚'},
+  {id:'dessert',label:'Dessert',emoji:'🍰'}
+];
+const NF=new Intl.NumberFormat('fr-FR',{maximumFractionDigits:2});
+const FR_FRAC={0.25:'¼',0.5:'½',0.75:'¾'};
+const norm=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+const quarter=v=>Math.max(0.25,Math.round(v*4)/4);
+function fracText(r){
+  const w=Math.floor(r),f=r-w;
+  return (w?String(w):'')+(f?(w?'\u2009':'')+FR_FRAC[f]:'');
+}
+function fmtG(v){
+  if(v>=1000){return NF.format(Math.round(v/50)*50/1000)+' kg';}
+  const step=v>=200?10:(v>=100?5:1);
+  return NF.format(Math.round(v/step)*step)+' g';
+}
+function fmtCl(v){
+  if(v>=100){return NF.format(Math.round(v/5)*5/100)+' L';}
+  return NF.format(Math.round(v*2)/2)+' cl';
+}
+function scaleItem(it,mult){
+  if(it.fixed){return {q:it.fixed,name:it.n,fixed:true};}
+  if(it.u==='ml'&&it.qty2){
+    const f=x=>Math.round(x/5)*5;
+    return {q:NF.format(f(it.qty*mult))+' à '+NF.format(f(it.qty2*mult))+' ml',name:it.n};
+  }
+  const v=it.qty*mult;
+  if(it.u==='g'){return {q:fmtG(v),name:it.n};}
+  if(it.u==='cl'){return {q:fmtCl(v),name:it.n};}
+  if(it.u==='càs'){return {q:fracText(quarter(v))+' càs',name:it.n};}
+  if(it.r==='w'){const r=Math.max(1,Math.round(v));return {q:String(r),name:(r>=2&&it.np)?it.np:it.n};}
+  const r=quarter(v);
+  return {q:fracText(r),name:(r>=2&&it.np)?it.np:it.n};
+}
+/*PURE-END*/
+
+const RECIPES=[
+{
+  id:'ragu-boeuf-effiloche',
+  title:`Ragù de bœuf effiloché et pasta maison`,
+  cat:'viande',
+  emoji:'🍝',
+  image:null,
+  tags:[`Pâtes`,`Mijoté`,`Au four`],
+  source:`Vidéo de Hugo`,
+  base:4,
+  baseNote:`Le nombre de personnes n’est pas précisé dans la source : base de 4 supposée, à confirmer.`,
+  total:`≈ 4 h 30`,
+  times:[
+    {l:`Four`,v:`3 h 30 minimum`},
+    {l:`Repos de la pâte`,v:`35 min à 1 h`},
+    {l:`Pétrissage`,v:`≈ 10 min`},
+    {l:`Durée évoquée`,v:`≈ 4 h 30`}
+  ],
+  groups:[
+    {t:`Le ragù`,items:[
+      {id:'b1',n:`plat de côtes de bœuf`,qty:1200,u:'g'},
+      {id:'b2',n:`nduja`,qty:30,u:'g',opt:true},
+      {id:'b3',n:`tomates en conserve`,qty:150,u:'g',warn:`Unité absente de la capture. Le transcript parle d’environ 150 g (avec un « 100 g maximum » peu clair). À vérifier.`},
+      {id:'b4',n:`oignon`,np:`oignons`,qty:1},
+      {id:'b5',n:`carotte`,np:`carottes`,qty:1},
+      {id:'b6',n:`branche de céleri`,np:`branches de céleri`,qty:2,r:'w'},
+      {id:'b7',n:`fenouil`,qty:0.5},
+      {id:'b8',n:`gousse d’ail`,np:`gousses d’ail`,qty:2,r:'w'},
+      {id:'b9',n:`concentré de tomate`,qty:1,u:'càs'},
+      {id:'b10',n:`vin rouge`,qty:25,u:'cl'},
+      {id:'b11',n:`bouillon de bœuf (ou de volaille)`,qty:70,u:'cl'},
+      {id:'b12',n:`feuille de laurier`,np:`feuilles de laurier`,qty:2,r:'w'},
+      {id:'b13',n:`branche de thym`,np:`branches de thym`,qty:3,r:'w'},
+      {id:'b14',n:`sel et poivre`,fixed:`au goût`},
+      {id:'b15',n:`piment d’Espelette`,fixed:`au goût`},
+      {id:'b16',n:`huile d’olive`,fixed:`selon besoin`}
+    ]},
+    {t:`Les pâtes maison`,opt:true,note:`Facultatif : des pâtes du commerce fonctionnent très bien, d’après la vidéo.`,items:[
+      {id:'p1',n:`farine`,qty:400,u:'g'},
+      {id:'p2',n:`œufs, pesés`,qty:200,u:'g',hint:`À peser plutôt qu’à compter : dans la vidéo, les œufs font 51 g ou 66 g.`},
+      {id:'p3',n:`sel`,fixed:`1 pincée`}
+    ]}
+  ],
+  steps:[
+    {ph:`Mise en place`,items:[
+      `Saler généreusement le plat de côtes sur ses deux faces, en salant de haut pour bien répartir. Réserver pendant la découpe des légumes.`,
+      `Tailler en fine brunoise la carotte, l’oignon, le céleri et le fenouil (couper le fenouil en quatre et le mettre à plat pour le tailler).`,
+      `Couper l’ail grossièrement : inutile de le râper ou de le presser, il va compoter pendant des heures.`
+    ]},
+    {ph:`Le ragù, dans la cocotte`,items:[
+      `Chauffer la cocotte à feu assez soutenu. Éponger la viande avec du papier absorbant : le sel a fait ressortir de l’humidité, qui ferait bouillir la viande au lieu de la saisir.`,
+      `Verser une généreuse rasade d’huile d’olive et marquer la viande sur chaque face jusqu’à belle coloration (le côté de l’os n’est pas forcément nécessaire). Réserver la viande.`,
+      `Baisser le feu. Ajouter les légumes et l’ail (un peu d’huile s’il n’y a plus de matière grasse) et les faire confire doucement : oignons translucides, carottes qui commencent à fondre, sans coloration.`,
+      `Nduja, si tu en trouves : retirer la peau et l’ajouter avec les légumes, sans la cuire comme une saucisse. Elle rend son gras, qui nourrit les légumes, et relève le tout avec son piment.`,
+      `Ajouter le concentré de tomate, bien enrober et laisser accrocher légèrement au fond, 1 à 2 minutes, en surveillant pour que ça ne brûle pas.`,
+      `Déglacer au vin rouge en décollant les sucs. Laisser réduire, feu un peu plus fort, jusqu’à ce que le vin devienne sirupeux et qu’on voie le fond de la cocotte en passant la cuillère.`,
+      `Ajouter le bouillon, remettre la viande avec son jus de cuisson, et compléter avec de l’eau si besoin pour bien noyer la viande.`,
+      `Ajouter les tomates en conserve (le ragù n’est pas une sauce tomate : la viande doit rester bien présente), le laurier et le thym, sans trop de laurier sinon c’est trop puissant. Porter à ébullition, à couvert.`
+    ]},
+    {ph:`Au four`,items:[
+      `Enfourner la cocotte couverte à 130 °C : 3 h 30 au minimum, jusqu’à 5, 6 ou 7 h. En milieu humide et fermé, ça ne peut pas brûler.`
+    ]},
+    {ph:`Les pâtes maison (facultatif)`,items:[
+      `Peser la farine et viser la moitié en poids d’œuf : le taux d’hydratation visé est de 50 à 55 %, soit 50 g d’œuf pour 100 g de farine.`,
+      `Sur un plan de travail propre, disposer la farine en fontaine et creuser un puits. Verser les œufs et une pincée de sel, battre à la fourchette, puis incorporer la farine progressivement sans casser le puits.`,
+      `Quand la texture est sableuse, avec des morceaux qui se forment, pétrir à la main environ 10 minutes : appuyer avec la paume, replier, tourner, recommencer. Ne pas ajouter d’eau ni de farine : si c’est dur, il faut pétrir plus longtemps.`,
+      `Former une boule, l’aplatir un peu, bien filmer et laisser reposer de 35 min à 1 h au frigo.`,
+      `Couper la pâte en deux. Passer au laminoir au premier cran, replier les extrémités pour obtenir un rectangle régulier et repasser au premier cran jusqu’à avoir une bande plate. Augmenter ensuite d’un cran à chaque passage, jusqu’au cran 6 (l’auteur évoque aussi le 7), en farinant légèrement entre les passages.`,
+      `Fariner la bande, la couper en 3 morceaux à peu près égaux, les enrouler et tailler des pappardelle d’environ 2 cm (de 2 à 5 cm selon l’envie). Fariner légèrement, former des nids et réserver.`
+    ]},
+    {ph:`Finition`,items:[
+      `Sortir la cocotte. Retirer la viande et les os, ainsi que le laurier et le thym. Laisser le bouillon réduire tranquillement pendant ce temps.`,
+      `Effilocher la viande à chaud, à la fourchette : le collagène est encore fluide, alors qu’une fois refroidie elle se fige et se travaille moins bien. Arroser d’une louche de bouillon pour la réchauffer et pousser l’effilochage jusqu’à n’avoir presque que des filaments.`,
+      `Goûter et rectifier : sel, et piment (d’Espelette si tu n’as pas de nduja). Remettre la viande dans la sauce. La consistance doit être ni trop liquide, ni trop sèche : elle doit enrober les pâtes. Baisser le feu.`,
+      `Avant de cuire les pâtes, faire chauffer l’eau et préparer une poêle allumée avec la quantité de ragù voulue. Les pâtes fraîches cuisent très vite : elles commencent à remonter à la surface quand elles sont presque prêtes (minuteur d’1 minute, relancé si besoin).`,
+      `Transférer les pâtes à la pince directement dans la poêle avec le ragù, avec un peu d’eau de cuisson pour lier. Ne pas trop les remuer, pour ne pas les casser.`,
+      `Dresser dans une assiette idéalement chaude : un nid de pâtes au centre, pour donner du volume, puis napper de ragù avec son jus. Servir bien chaud.`
+    ]}
+  ],
+  notes:[
+    `Source : vidéo de Hugo. Le texte vient d’une transcription automatique très bruitée, les étapes sont reformulées. Les ingrédients viennent de la capture d’écran. À recouper avec la vidéo en cas de doute.`,
+    `Le moment exact où l’ail est ajouté n’est pas clair dans le transcript : je l’ai mis avec les légumes.`,
+    `Le transcript ne donne ni temps de cuisson précis des pâtes, ni consigne de salage de l’eau.`,
+    `Les temps de cuisson ne changent pas automatiquement avec le nombre de personnes. Si tu augmentes fortement les quantités, adapte la taille de la cocotte.`
+  ]
+},
+{
+  id:'quiche-lorraine',
+  title:`Quiche lorraine`,
+  cat:'viande',
+  emoji:'🥓',
+  image:null,
+  tags:[`Quiche`,`Au four`],
+  source:`Fiche PDF`,
+  base:4,
+  baseNote:`Le nombre de personnes n’est pas indiqué dans le PDF : base de 4 supposée, à confirmer.`,
+  total:`1 h`,
+  times:[
+    {l:`Préparation`,v:`15 min`},
+    {l:`Cuisson`,v:`45 min`},
+    {l:`Temps total`,v:`1 h`}
+  ],
+  groups:[
+    {t:`Ingrédients`,items:[
+      {id:'l1',n:`pâte brisée`,qty:200,u:'g'},
+      {id:'l2',n:`lardons`,qty:200,u:'g'},
+      {id:'l3',n:`beurre`,qty:30,u:'g'},
+      {id:'l4',n:`œuf`,np:`œufs`,qty:3,r:'w'},
+      {id:'l5',n:`crème fraîche`,qty:20,u:'cl'},
+      {id:'l6',n:`lait`,qty:20,u:'cl'},
+      {id:'l7',n:`sel`,fixed:`au goût`},
+      {id:'l8',n:`poivre`,fixed:`au goût`},
+      {id:'l9',n:`muscade`,fixed:`au goût`}
+    ]}
+  ],
+  steps:[
+    {ph:`Préparation`,items:[
+      `Préchauffer le four à 180 °C (thermostat 6).`,
+      `Étaler la pâte dans un moule et la piquer à la fourchette. Parsemer de copeaux de beurre.`,
+      `Faire rissoler les lardons à la poêle.`,
+      `Battre les œufs, la crème fraîche et le lait. Ajouter les lardons.`,
+      `Assaisonner de sel, de poivre et de muscade.`
+    ]},
+    {ph:`Cuisson`,items:[
+      `Verser la préparation sur la pâte.`,
+      `Cuire 45 à 50 minutes.`
+    ]}
+  ],
+  notes:[
+    `Source d’origine non indiquée dans le PDF.`,
+    `Le PDF annonce 45 min de cuisson en en-tête, mais 45 à 50 min dans l’étape : les deux ne concordent pas exactement.`,
+    `Le PDF ne précise pas si la pâte brisée est maison ou du commerce, ni la taille du moule.`,
+    `Les temps de cuisson ne changent pas automatiquement avec le nombre de personnes.`
+  ]
+},
+{
+  id:'quiche-poireaux',
+  title:`Quiche aux poireaux`,
+  cat:'vegetarien',
+  emoji:'🥧',
+  image:null,
+  tags:[`Quiche`,`Au four`],
+  source:`Fiche PDF, 04/11/2020`,
+  base:4,
+  baseNote:`Base de 4 personnes, indiquée dans la source.`,
+  total:`55 min`,
+  times:[
+    {l:`Temps annoncé`,v:`55 min`},
+    {l:`Poireaux à la poêle`,v:`≈ 20 min`},
+    {l:`Four`,v:`30 à 35 min`}
+  ],
+  groups:[
+    {t:`Pour la pâte`,items:[
+      {id:'q1',n:`farine de sarrasin`,qty:150,u:'g'},
+      {id:'q2',n:`flocons d’avoine`,qty:50,u:'g'},
+      {id:'q3',n:`huile d’olive`,qty:6,u:'càs'},
+      {id:'q4',n:`sel`,fixed:`2 pincées`},
+      {id:'q5',n:`eau`,qty:80,qty2:100,u:'ml'}
+    ]},
+    {t:`Pour la garniture`,items:[
+      {id:'q6',n:`poireau`,np:`poireaux`,qty:3,r:'w'},
+      {id:'q7',n:`échalote`,np:`échalotes`,qty:3,r:'w'},
+      {id:'q8',n:`œuf`,np:`œufs`,qty:3,r:'w'},
+      {id:'q9',n:`crème fraîche ou crème végétale`,qty:20,u:'cl'},
+      {id:'q10',n:`fromage râpé`,qty:50,u:'g'},
+      {id:'q11',n:`moutarde`,qty:2,u:'càs'},
+      {id:'q12',n:`sel et poivre`,fixed:`au goût`},
+      {id:'q13',n:`noix de muscade`,fixed:`1 pincée`,opt:true},
+      {id:'q14',n:`huile d’olive, pour les échalotes`,fixed:`un peu`}
+    ]}
+  ],
+  steps:[
+    {ph:`La pâte`,items:[
+      `Dans un saladier, mélanger la farine, les flocons d’avoine, le sel et l’huile d’olive. Sabler la pâte : mélanger en prenant la matière par petites quantités et en la frottant entre les paumes.`,
+      `Ajouter l’eau progressivement jusqu’à obtenir une boule de pâte homogène.`,
+      `Étaler la pâte puis la déposer dans un moule à tarte. Si elle est difficile à étaler car un peu collante, réaliser cette opération entre deux feuilles de papier sulfurisé.`
+    ]},
+    {ph:`La garniture`,items:[
+      `Éplucher puis émincer finement les échalotes. Dans une grande poêle, les faire revenir quelques minutes dans un peu d’huile d’olive.`,
+      `Pendant ce temps, laver les poireaux puis les couper en tronçons. Les ajouter dans la poêle avec les échalotes et faire revenir environ 20 minutes.`,
+      `Préchauffer le four à 180 °C. Dans un saladier, battre les œufs avec la crème, le fromage râpé et la muscade. Saler et poivrer.`
+    ]},
+    {ph:`Montage et cuisson`,items:[
+      `Étaler la moutarde sur le fond de tarte et piquer le fond de tarte. Étaler les poireaux sur la pâte, puis verser par-dessus la préparation à base d’œufs. Enfourner pendant 30 à 35 minutes.`
+    ]}
+  ],
+  notes:[
+    `Source d’origine non indiquée dans le PDF, qui est daté du 4 novembre 2020.`,
+    `Le PDF annonce 55 minutes au total, ce qui paraît juste : 20 min de poireaux à la poêle plus 30 à 35 min de four font déjà 50 à 55 min, sans la préparation de la pâte.`,
+    `La pâte n’est pas précuite : elle est garnie directement puis enfournée.`,
+    `Crème fraîche ou crème végétale au choix, d’après le PDF.`,
+    `Les temps de cuisson ne changent pas automatiquement avec le nombre de personnes.`
+  ]
+}
+];
+
+/* ---------- Rendu ---------- */
+const app=document.getElementById('app');
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const store={
+  get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v);}catch(e){return d;}},
+  set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+};
+const state={cat:'all',q:''};
+let current=null;
+
+const plural=(n,s,p)=>n>1?p:s;
+const catOf=id=>CATS.find(c=>c.id===id);
+const thumb=r=>r.image
+  ?`<span class="thumb"><img src="${esc(r.image)}" alt=""></span>`
+  :`<span class="thumb tile" aria-hidden="true">${r.emoji}</span>`;
+
+function renderHome(){
+  document.title='Mes recettes';
+  const n=RECIPES.length;
+  app.innerHTML=`
+    <header class="top">
+      <h1>Mes recettes</h1>
+      <p class="sub">${n} recette${plural(n,'','s')} au sommaire</p>
+      <label class="search"><span class="sr">Rechercher une recette</span>
+        <input id="q" type="search" placeholder="Rechercher un plat, un ingrédient" autocomplete="off"></label>
+    </header>
+    <nav class="chips" id="chips" aria-label="Thèmes"></nav>
+    <main id="list"></main>`;
+  document.getElementById('q').value=state.q;
+  updateHome();
+}
+function updateHome(){
+  const counts={};CATS.forEach(c=>counts[c.id]=RECIPES.filter(r=>r.cat===c.id).length);
+  const chip=(id,label,emoji,n)=>`<button class="chip${n===0?' zero':''}" data-act="cat" data-cat="${id}" aria-pressed="${state.cat===id}">${emoji?emoji+' ':''}${esc(label)} <span class="c">${n}</span></button>`;
+  document.getElementById('chips').innerHTML=chip('all','Toutes','',RECIPES.length)+CATS.map(c=>chip(c.id,c.label,c.emoji,counts[c.id])).join('');
+  const q=norm(state.q.trim());
+  const match=r=>{
+    if(state.cat!=='all'&&r.cat!==state.cat)return false;
+    if(!q)return true;
+    const hay=[r.title,...r.tags,catOf(r.cat).label,...r.groups.flatMap(g=>g.items.map(i=>i.n))].map(norm).join(' ');
+    return hay.includes(q);
+  };
+  const found=RECIPES.filter(match);
+  const row=r=>`<a class="row" href="#/r/${encodeURIComponent(r.id)}">${thumb(r)}
+    <span><span class="t">${esc(r.title)}</span>
+    <span class="pills"><span class="pill">${esc(catOf(r.cat).label)}</span>${r.tags.slice(0,1).map(t=>`<span class="pill">${esc(t)}</span>`).join('')}<span class="pill saf">${esc(r.total)}</span></span></span></a>`;
+  let html='';
+  if(!found.length){
+    html=q?`<div class="empty">Aucune recette ne correspond à « ${esc(state.q.trim())} ».</div>`
+          :`<div class="empty">Aucune recette dans ce thème pour l’instant.</div>`;
+  }else if(state.cat==='all'){
+    html=CATS.map(c=>{
+      const rs=found.filter(r=>r.cat===c.id);
+      if(!rs.length)return '';
+      return `<section class="grp"><h2>${c.emoji} ${esc(c.label)} <span class="c">${rs.length}</span></h2>${rs.map(row).join('')}</section>`;
+    }).join('');
+  }else{
+    html=`<section class="grp">${found.map(row).join('')}</section>`;
+  }
+  document.getElementById('list').innerHTML=html;
+}
+
+function checks(r){return store.get('chk:'+r.id,{ing:{},step:{}});}
+function servings(r){
+  const v=store.get('serv:'+r.id,r.base);
+  return Math.min(24,Math.max(1,Number(v)||r.base));
+}
+
+function renderRecipe(r){
+  document.title=r.title;
+  const c=checks(r);
+  let idx=0;
+  const steps=r.steps.map(p=>`
+    <h3 class="ph3">${esc(p.ph)}</h3>
+    <ol class="steps">${p.items.map(t=>{
+      const i=idx++;
+      return `<li class="step${c.step[i]?' done':''}" data-act="step" data-i="${i}" role="checkbox" aria-checked="${!!c.step[i]}" tabindex="0"><span class="n">${i+1}</span><p>${esc(t)}</p></li>`;
+    }).join('')}</ol>`).join('');
+  const hero=r.image
+    ?`<div class="hero"><img src="${esc(r.image)}" alt="${esc(r.title)}"></div>`
+    :`<div class="hero tile"><span class="plate" aria-hidden="true">${r.emoji}</span><span class="cap"><span>Le visuel s’affichera ici</span></span></div>`;
+  app.innerHTML=`
+    <div class="bar"><a class="back" href="#/">‹ Sommaire</a></div>
+    <article>
+      ${hero}
+      <h1 class="rt">${esc(r.title)}</h1>
+      <div class="pills"><span class="pill">${esc(catOf(r.cat).label)}</span>${r.tags.map(t=>`<span class="pill">${esc(t)}</span>`).join('')}<span class="pill saf">${esc(r.source)}</span></div>
+      <dl class="times">${r.times.map(t=>`<div><dt>${esc(t.l)}</dt><dd>${esc(t.v)}</dd></div>`).join('')}</dl>
+
+      <section>
+        <div class="sh"><h2>Ingrédients</h2><button class="link" data-act="uncheck">Tout décocher</button></div>
+        <div class="stepper" role="group" aria-label="Nombre de personnes">
+          <button class="rnd" data-act="minus" aria-label="Une personne de moins">−</button>
+          <div class="count"><output id="serv" aria-live="polite"></output><span id="servlab"></span></div>
+          <button class="rnd" data-act="plus" aria-label="Une personne de plus">+</button>
+        </div>
+        <p class="basenote" id="basenote"></p>
+        <div id="ings"></div>
+      </section>
+
+      <section>
+        <div class="sh"><h2>Préparation</h2></div>
+        ${steps}
+      </section>
+
+      <section class="notes">
+        <div class="sh"><h2>À savoir</h2></div>
+        <ul>${r.notes.map(n=>`<li>${esc(n)}</li>`).join('')}</ul>
+      </section>
+    </article>`;
+  updateIngs(r,false);
+}
+
+function updateIngs(r,animate){
+  const s=servings(r),mult=s/r.base,c=checks(r);
+  document.getElementById('serv').textContent=s;
+  document.getElementById('servlab').textContent=plural(s,'personne','personnes');
+  const [minus,plus]=[document.querySelector('[data-act="minus"]'),document.querySelector('[data-act="plus"]')];
+  minus.disabled=s<=1;plus.disabled=s>=24;
+  document.getElementById('basenote').innerHTML=
+    `Recette de base : ${r.base} personnes. ${esc(r.baseNote)}`+
+    (s!==r.base?` <button class="link" data-act="reset-serv">Revenir à ${r.base}</button>`:'');
+  const box=document.getElementById('ings');
+  box.innerHTML=r.groups.map(g=>`
+    <h3 class="gt">${esc(g.t)}${g.opt?'<em class="tag">facultatif</em>':''}</h3>
+    ${g.note?`<p class="gnote">${esc(g.note)}</p>`:''}
+    <ul class="ings">${g.items.map(it=>{
+      const o=scaleItem(it,mult),on=!!c.ing[it.id];
+      const extra=it.warn||it.hint;
+      return `<li class="ing${on?' on':''}${it.warn?' flag':''}" data-act="ing" data-id="${it.id}" role="checkbox" aria-checked="${on}" tabindex="0">
+        <span class="box" aria-hidden="true"></span>
+        <span class="qty${o.fixed?' fixed':''}">${esc(o.q)}</span>
+        <span class="nm">${esc(o.name)}${it.opt?'<em class="tag">facultatif</em>':''}${extra?`<small>${esc(extra)}</small>`:''}</span>
+      </li>`;}).join('')}</ul>`).join('');
+  if(animate){box.classList.remove('bump');void box.offsetWidth;box.classList.add('bump');}
+}
+
+/* ---------- Événements ---------- */
+document.addEventListener('click',e=>{
+  const t=e.target.closest('[data-act]');
+  if(!t)return;
+  const a=t.dataset.act,r=current;
+  if(a==='cat'){state.cat=t.dataset.cat;updateHome();return;}
+  if(!r)return;
+  if(a==='plus'||a==='minus'){
+    const s=servings(r)+(a==='plus'?1:-1);
+    store.set('serv:'+r.id,Math.min(24,Math.max(1,s)));
+    updateIngs(r,true);return;
+  }
+  if(a==='reset-serv'){store.set('serv:'+r.id,r.base);updateIngs(r,true);return;}
+  if(a==='ing'){
+    const c=checks(r),id=t.dataset.id;
+    c.ing[id]=!c.ing[id];store.set('chk:'+r.id,c);
+    t.classList.toggle('on',!!c.ing[id]);t.setAttribute('aria-checked',!!c.ing[id]);return;
+  }
+  if(a==='step'){
+    const c=checks(r),i=t.dataset.i;
+    c.step[i]=!c.step[i];store.set('chk:'+r.id,c);
+    t.classList.toggle('done',!!c.step[i]);t.setAttribute('aria-checked',!!c.step[i]);return;
+  }
+  if(a==='uncheck'){
+    store.set('chk:'+r.id,{ing:{},step:{}});
+    renderRecipe(r);return;
+  }
+});
+document.addEventListener('keydown',e=>{
+  if((e.key==='Enter'||e.key===' ')&&e.target.matches&&e.target.matches('[data-act="ing"],[data-act="step"]')){
+    e.preventDefault();e.target.click();
+  }
+});
+document.addEventListener('input',e=>{
+  if(e.target.id==='q'){state.q=e.target.value;updateHome();}
+});
+
+function route(){
+  const m=location.hash.match(/^#\/r\/(.+)$/);
+  const r=m&&RECIPES.find(x=>x.id===decodeURIComponent(m[1]));
+  if(r){current=r;renderRecipe(r);}else{current=null;renderHome();}
+  window.scrollTo(0,0);
+}
+window.addEventListener('hashchange',route);
+route();
+</script>
+</body>
+</html>
