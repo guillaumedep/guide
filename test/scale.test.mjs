@@ -15,9 +15,8 @@ test('catégories identiques au prototype', () => {
   assert.deepEqual(S.CATS, JSON.parse(JSON.stringify(P.CATS)));
 });
 
-test('données des recettes identiques au prototype', () => {
+test('recettes issues du prototype inchangées', () => {
   const byId = Object.fromEntries(recipes.map(r => [r.id, r]));
-  assert.equal(recipes.length, P.RECIPES.length);
   for (const r of P.RECIPES) assert.deepEqual(byId[r.id], JSON.parse(JSON.stringify(r)), r.id);
 });
 
