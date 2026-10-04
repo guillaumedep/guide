@@ -1,0 +1,35 @@
+{
+  "id": "eventail-tomate-mozzarella",
+  "title": "Éventail tomate-mozzarella",
+  "cat": "entree",
+  "emoji": "🍅",
+  "image": null,
+  "tags": ["Été", "Sans cuisson", "Végétarien"],
+  "source": "Fiche imprimée (Google Docs), source d’origine non indiquée",
+  "base": 1,
+  "baseNote": "Le nombre de personnes n’est pas indiqué : base d’1 grosse tomate par personne supposée, à confirmer.",
+  "times": [
+    { "l": "Cuisson", "v": "aucune" }
+  ],
+  "groups": [
+    {
+      "t": "Ingrédients",
+      "items": [
+        { "id": "t1", "n": "grosse tomate", "np": "grosses tomates", "qty": 1, "r": "w" },
+        { "id": "t2", "n": "mozzarella en rondelles", "fixed": "selon la taille de la tomate" },
+        { "id": "t3", "n": "pesto maison", "fixed": "un filet" }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "ph": "Préparation",
+      "items": [
+        "Trancher la tomate sans la couper entièrement.",
+        "Insérer des rondelles de mozzarella dans les entailles.",
+        "Ajouter un filet de pesto fait maison."
+      ]
+    }
+  ],
+  "notes": ["La fiche ne donne ni quantités précises ni temps de préparation."]
+}

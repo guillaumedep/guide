@@ -1,0 +1,58 @@
+{
+  "id": "salade-lyonnaise",
+  "title": "Salade lyonnaise",
+  "cat": "entree",
+  "emoji": "🥗",
+  "image": null,
+  "tags": ["Salade", "Œuf poché"],
+  "source": "Marmiton, recette proposée par FrenchyEve",
+  "base": 4,
+  "baseNote": "Base de 4 personnes, indiquée dans la source.",
+  "total": "25 min",
+  "times": [
+    { "l": "Préparation", "v": "20 min" },
+    { "l": "Cuisson", "v": "5 min" }
+  ],
+  "groups": [
+    {
+      "t": "Ingrédients",
+      "items": [
+        { "id": "l1", "n": "œuf", "np": "œufs", "qty": 4, "r": "w" },
+        { "id": "l2", "n": "lard fumé", "qty": 200, "u": "g" },
+        { "id": "l3", "n": "pissenlits", "qty": 400, "u": "g" },
+        { "id": "l4", "n": "tranche de pain un peu rassis", "np": "tranches de pain un peu rassis", "qty": 4, "r": "w" },
+        { "id": "l5", "n": "ciboulette", "fixed": "un peu" },
+        { "id": "l6", "n": "huile, vinaigre de vin rouge et moutarde (vinaigrette)", "fixed": "selon besoin" },
+        { "id": "l7", "n": "vinaigre d’alcool (pour pocher les œufs)", "fixed": "un peu" }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "ph": "Préparation",
+      "items": [
+        "Trier les pissenlits et bien les laver à l’eau vinaigrée.",
+        "Préparer une vinaigrette moutardée.",
+        "Couper le lard en lardons et le pain en dés. Faire rissoler les lardons dans une poêle antiadhésive, puis faire revenir les croûtons dans la même poêle, dans le gras rendu par le lard."
+      ]
+    },
+    {
+      "ph": "Œufs pochés",
+      "items": [
+        "Pendant ce temps, porter à ébullition une casserole d’eau additionnée de vinaigre d’alcool. Casser un œuf dans une tasse et le faire glisser dans l’eau bouillante sans le disperser (si la casserole est assez grande, ajouter les autres œufs, toujours un par un).",
+        "Au bout d’1 min à 1 min 30, l’œuf est mollet : le sortir délicatement et le laisser égoutter dans un bol."
+      ]
+    },
+    {
+      "ph": "Service",
+      "items": [
+        "Assaisonner les pissenlits avec la vinaigrette, répartir dessus les lardons et les croûtons chauds, poser un œuf poché encore tiède et décorer de ciboulette ciselée. Servir aussitôt."
+      ]
+    }
+  ],
+  "notes": [
+    "Source : fiche Marmiton imprimée.",
+    "Un commentaire de la fiche indique que la recette marche aussi avec une feuille de chêne à la place des pissenlits.",
+    "Les temps de cuisson ne changent pas automatiquement avec le nombre de personnes."
+  ]
+}

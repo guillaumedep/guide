@@ -1,0 +1,61 @@
+{
+  "id": "poulet-au-citron",
+  "title": "Poulet au citron",
+  "cat": "viande",
+  "emoji": "🍋",
+  "image": null,
+  "tags": ["Poulet", "Cocotte"],
+  "source": "Blog (auteur et site non indiqués sur la fiche)",
+  "base": 4,
+  "baseNote": "La source indique 4 à 6 personnes : base de 4 retenue (la plus basse, comme pour le gâteau de Maman Guérard).",
+  "total": "≈ 1 h",
+  "times": [
+    { "l": "Dorage", "v": "≈ 10 min" },
+    { "l": "Cuisson à couvert", "v": "35 min" },
+    { "l": "Finition", "v": "2 à 7 min" }
+  ],
+  "groups": [
+    {
+      "t": "Ingrédients",
+      "items": [
+        { "id": "c1", "n": "poulet", "np": "poulets", "qty": 1 },
+        { "id": "c2", "n": "échalote", "np": "échalotes", "qty": 2, "r": "w" },
+        { "id": "c3", "n": "cube de bouillon de volaille", "np": "cubes de bouillon de volaille", "qty": 1, "r": "w" },
+        { "id": "c4", "n": "vin blanc", "qty": 20, "u": "cl" },
+        { "id": "c5", "n": "gingembre en poudre", "qty": 1, "u": "càc" },
+        { "id": "c6", "n": "farine", "qty": 1, "u": "càs" },
+        { "id": "c7", "n": "gros citron bio (jus et zeste)", "np": "gros citrons bio (jus et zeste)", "qty": 1 },
+        { "id": "c8", "n": "pincée de sel", "np": "pincées de sel", "qty": 1, "r": "w" },
+        { "id": "c9", "n": "pincée de poivre", "np": "pincées de poivre", "qty": 1, "r": "w" },
+        { "id": "c10", "n": "beurre", "qty": 40, "u": "g" },
+        { "id": "c11", "n": "huile d’olive", "qty": 1, "u": "càs" }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "ph": "Préparation",
+      "items": [
+        "Couper le poulet en morceaux, puis, si on le souhaite, retirer la peau des morceaux."
+      ]
+    },
+    {
+      "ph": "Cuisson en cocotte",
+      "items": [
+        "Dans une cocotte, faire fondre le beurre avec l’huile d’olive. Quand c’est chaud, ajouter les morceaux de poulet et les faire dorer sur toutes les faces une dizaine de minutes : la viande doit être bien colorée.",
+        "Ajouter les échalotes ciselées, la farine, le gingembre et le cube de bouillon, puis mouiller avec le vin blanc. Mélanger, couvrir et laisser cuire 35 minutes à couvert.",
+        "Ouvrir : s’il reste un peu trop de liquide, laisser cuire 5 minutes de plus à découvert.",
+        "Ajouter le jus du citron et laisser cuire 2 minutes de plus."
+      ]
+    },
+    {
+      "ph": "Service",
+      "items": ["Servir en saupoudrant le poulet de zeste de citron râpé."]
+    }
+  ],
+  "notes": [
+    "La fiche ne mentionne ni le site ni l’auteur. L’auteur cite d’autres versions qu’il a testées (poulet au citron au Delicook, poulet rôti de Jamie Oliver).",
+    "Le sel et le poivre sont listés mais la préparation ne dit pas quand les ajouter.",
+    "Les temps de cuisson ne changent pas automatiquement avec le nombre de personnes."
+  ]
+}

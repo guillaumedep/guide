@@ -1,0 +1,48 @@
+{
+  "id": "taboule-libanais",
+  "title": "Le vrai taboulé libanais",
+  "cat": "entree",
+  "emoji": "🌿",
+  "image": null,
+  "tags": ["Salade", "Végétarien", "Sans cuisson"],
+  "source": "Recette proposée par Youmna_1 (fiche imprimée, site non indiqué)",
+  "base": 5,
+  "baseNote": "Base de 5 personnes, indiquée dans la source.",
+  "total": "25 min",
+  "times": [
+    { "l": "Préparation", "v": "25 min" },
+    { "l": "Trempage du boulghour", "v": "15 min" }
+  ],
+  "groups": [
+    {
+      "t": "Ingrédients",
+      "items": [
+        { "id": "b1", "n": "grosse tomate ferme", "np": "grosses tomates fermes", "qty": 4, "r": "w" },
+        { "id": "b2", "n": "botte d’oignons verts", "np": "bottes d’oignons verts", "qty": 1 },
+        { "id": "b3", "n": "botte de persil plat", "np": "bottes de persil plat", "qty": 2 },
+        { "id": "b4", "n": "botte de menthe fraîche", "np": "bottes de menthe fraîche", "qty": 1 },
+        { "id": "b5", "n": "petite poignée de boulghour brun moyen (blé concassé)", "np": "petites poignées de boulghour brun moyen (blé concassé)", "qty": 1 },
+        { "id": "b6", "n": "citron", "np": "citrons", "qty": 1 },
+        { "id": "b7", "n": "huile d’olive", "qty": 3, "u": "càs" },
+        { "id": "b8", "n": "pincée de sel", "np": "pincées de sel", "qty": 2, "r": "w" }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "ph": "Préparation",
+      "items": [
+        "Avant de commencer, mettre le boulghour dans un bol d’eau pendant 15 minutes pour le laisser ramollir.",
+        "Laver et équeuter le persil, puis le couper au couteau (ou aux ciseaux).",
+        "Faire de même avec la menthe : les feuilles doivent mesurer environ 1 cm. Mettre le tout dans un saladier.",
+        "Couper les oignons verts très finement et les tomates en petits dés, puis les ajouter au saladier.",
+        "Quand le boulghour ne croque plus, le sortir de l’eau et le presser entre les mains pour l’essorer. L’ajouter au saladier.",
+        "Assaisonnement : presser le citron entier et arroser le contenu du saladier. Ajouter le sel et l’huile d’olive."
+      ]
+    }
+  ],
+  "notes": [
+    "Le taboulé doit être brillant : c’est le signe qu’il y a assez d’huile d’olive.",
+    "La liste d’ingrédients dit « 3 cuillerées d’huile d’olive » et la préparation « 3 cuillères à soupe » : cuillères à soupe retenues."
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "id": "gratin-chou-fleur-leger",
+  "title": "Gratin de chou-fleur léger",
+  "cat": "accompagnement",
+  "emoji": "🥦",
+  "image": null,
+  "tags": ["Gratin", "Au four", "Cocotte-minute"],
+  "source": "Marmiton, recette proposée par laurence_165",
+  "base": 4,
+  "baseNote": "Base de 4 personnes, indiquée dans la source.",
+  "total": "50 min",
+  "times": [
+    { "l": "Préparation", "v": "20 min" },
+    { "l": "Cuisson", "v": "30 min" },
+    { "l": "Four", "v": "200 °C (th. 6-7)" }
+  ],
+  "groups": [
+    {
+      "t": "Ingrédients",
+      "items": [
+        { "id": "f1", "n": "gros chou-fleur", "np": "gros choux-fleurs", "qty": 1 },
+        { "id": "f2", "n": "beurre", "qty": 25, "u": "g" },
+        { "id": "f3", "n": "farine", "qty": 30, "u": "g" },
+        { "id": "f4", "n": "cube de bouillon de volaille", "np": "cubes de bouillon de volaille", "qty": 1, "r": "w" },
+        { "id": "f5", "n": "eau", "qty": 40, "u": "cl" },
+        { "id": "f6", "n": "crème", "fixed": "un peu", "opt": true },
+        { "id": "f7", "n": "fromage râpé (de préférence du comté)", "fixed": "une poignée" },
+        { "id": "f8", "n": "sel, poivre et muscade", "fixed": "au goût" },
+        { "id": "f9", "n": "beurre pour le plat", "fixed": "un peu" }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "ph": "Le chou-fleur",
+      "items": [
+        "Nettoyer le chou-fleur et le couper en bouquets. Les mettre dans le panier vapeur de la cocotte-minute et cuire environ 8 minutes après le sifflement de la soupape.",
+        "Vérifier la cuisson en piquant un bouquet avec la pointe d’un couteau : il doit être tendre mais pas mou."
+      ]
+    },
+    {
+      "ph": "La sauce blanche",
+      "items": [
+        "Mettre le bouillon de volaille dans l’eau et porter à ébullition.",
+        "Faire fondre le beurre dans une casserole, puis ajouter la farine. Verser peu à peu le bouillon bien chaud, comme pour une béchamel.",
+        "Selon les goûts, ajouter (ou non) un peu de crème. Saler, poivrer et ajouter une pointe de muscade."
+      ]
+    },
+    {
+      "ph": "Gratin",
+      "items": [
+        "Beurrer un plat à gratin et en couvrir le fond de sauce. Disposer dessus les bouquets, têtes en bas (sinon la sauce ne les imprègne pas). Recouvrir du reste de sauce.",
+        "Parsemer de fromage râpé (de préférence du comté, au goût plus prononcé).",
+        "Enfourner environ 30 minutes à 200 °C (th. 6-7)."
+      ]
+    }
+  ],
+  "notes": [
+    "Source : fiche Marmiton imprimée.",
+    "Les temps de cuisson ne changent pas automatiquement avec le nombre de personnes."
+  ]
+}

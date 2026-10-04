@@ -1,0 +1,73 @@
+{
+  "id": "flan-thon-coulis-poireau",
+  "title": "Flan de thon au coulis de poireau",
+  "cat": "poisson",
+  "emoji": "🐟",
+  "image": null,
+  "tags": ["Flan", "Au four", "Bain-marie"],
+  "source": "Coupure de presse",
+  "base": 4,
+  "baseNote": "Base de 4 personnes, indiquée dans la source.",
+  "total": "≈ 1 h",
+  "times": [
+    { "l": "Four (au bain-marie)", "v": "35 min" },
+    { "l": "Poireaux à l’étuvée", "v": "20 min" },
+    { "l": "Four", "v": "thermostat 7" }
+  ],
+  "groups": [
+    {
+      "t": "Le flan",
+      "items": [
+        { "id": "f1", "n": "thon au naturel", "qty": 200, "u": "g" },
+        { "id": "f2", "n": "crème fraîche", "qty": 200, "u": "g" },
+        { "id": "f3", "n": "œuf", "np": "œufs", "qty": 4, "r": "w" },
+        { "id": "f4", "n": "persil haché", "qty": 2, "u": "càs" },
+        { "id": "f5", "n": "sel et poivre moulu", "fixed": "au goût" },
+        { "id": "f6", "n": "beurre pour le moule", "fixed": "un peu" }
+      ]
+    },
+    {
+      "t": "Le coulis de poireau",
+      "items": [
+        { "id": "c1", "n": "blanc de poireau", "np": "blancs de poireaux", "qty": 4, "r": "w" },
+        { "id": "c2", "n": "crème fraîche", "qty": 200, "u": "g" },
+        { "id": "c3", "n": "beurre", "qty": 20, "u": "g", "hint": "Imprimé « 20 o » sur la coupure, lu comme 20 g." },
+        {
+          "id": "c4",
+          "n": "sel et poivre moulu",
+          "fixed": "au goût",
+          "warn": "L’étape 5 de l’article indique « 3 cuillerées à soupe de sel et de poivre », ce qui paraît énorme pour 4 personnes : probable erreur d’impression. Saler avec prudence et goûter."
+        }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "ph": "Le flan",
+      "items": [
+        "Beurrer un moule à cake.",
+        "Passer au mixer la moitié du thon. Mélanger les œufs et la crème, puis ajouter à cette préparation le thon restant émietté, le persil, le sel et le poivre moulu.",
+        "Préchauffer le four à thermostat 7.",
+        "Verser la préparation dans le moule et enfourner 35 minutes, au bain-marie."
+      ]
+    },
+    {
+      "ph": "Le coulis",
+      "items": [
+        "Laver les poireaux, les émincer et les faire étuver dans le beurre avec le sel et le poivre moulu pendant vingt minutes.",
+        "Les passer ensuite au mixer avec la crème fraîche et réchauffer doucement."
+      ]
+    },
+    {
+      "ph": "Service",
+      "items": ["Servir le flan démoulé avec cette sauce."]
+    }
+  ],
+  "notes": [
+    "Source : coupure de presse photocopiée. Le nom de la rubrique et l’auteur ne sont pas lisibles sur la photo.",
+    "Le sel du coulis : l’article écrit « 3 cuillerées à soupe de sel et de poivre moulu », alors que la liste d’ingrédients dit seulement « encore du sel et du poivre moulu ». La quantité imprimée paraît être une erreur : elle n’est pas reprise telle quelle.",
+    "Thermostat 7 correspond à environ 210 °C selon la conversion habituelle (thermostat × 30). L’article ne donne pas la température en degrés.",
+    "L’article précise « attention au bain-marie » sans détailler : le moule cuit posé dans un plat d’eau chaude.",
+    "Les temps de cuisson ne changent pas automatiquement avec le nombre de personnes."
+  ]
+}

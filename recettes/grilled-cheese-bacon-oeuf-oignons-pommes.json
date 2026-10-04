@@ -1,0 +1,57 @@
+{
+  "id": "grilled-cheese-bacon-oeuf-oignons-pommes",
+  "title": "Grilled cheese bacon et œuf, oignons et pommes caramélisés",
+  "cat": "viande",
+  "emoji": "🥓",
+  "image": null,
+  "tags": ["Sandwich", "Œuf", "Poêle"],
+  "source": "Steele House Kitchen (blog en anglais) — traduit",
+  "base": 2,
+  "baseNote": "La recette donne 2 sandwichs : base d’1 sandwich par personne supposée.",
+  "times": [
+    { "l": "Bacon au four", "v": "20 min (ou 4 min au micro-ondes)" },
+    { "l": "Oignons et pommes", "v": "10 min" },
+    { "l": "Œufs", "v": "≈ 3 min" },
+    { "l": "Sandwichs", "v": "3 à 4 min" }
+  ],
+  "groups": [
+    {
+      "t": "Pour 2 sandwichs",
+      "items": [
+        { "id": "e1", "n": "tranche de bacon", "np": "tranches de bacon", "qty": 4, "r": "w" },
+        { "id": "e2", "n": "oignon", "np": "oignons", "qty": 1 },
+        { "id": "e3", "n": "pomme acidulée (Fuji ou Granny Smith)", "np": "pommes acidulées (Fuji ou Granny Smith)", "qty": 1 },
+        { "id": "e4", "n": "cassonade", "qty": 2, "u": "càc" },
+        { "id": "e5", "n": "œuf", "np": "œufs", "qty": 2, "r": "w" },
+        { "id": "e6", "n": "sel et poivre noir du moulin", "fixed": "au goût" },
+        { "id": "e7", "n": "tranche de pain de mie blanc", "np": "tranches de pain de mie blanc", "qty": 4, "r": "w" },
+        { "id": "e8", "n": "tranche de cheddar", "np": "tranches de cheddar", "qty": 4, "r": "w" },
+        { "id": "e9", "n": "beurre mou", "fixed": "selon besoin", "hint": "½ càc pour les oignons, 1 càc pour les œufs, et de quoi tartiner le pain." }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "ph": "Préparation",
+      "items": [
+        "Le bacon : préchauffer le four à 200 °C. Couvrir une plaque de papier aluminium et poser une grille dessus. Étaler le bacon sur la grille et enfourner 20 minutes, jusqu’à ce qu’il soit croustillant. Ou bien : poser le bacon sur une assiette, couvrir d’essuie-tout et passer 4 minutes au micro-ondes à pleine puissance.",
+        "Éplucher l’oignon et l’émincer finement. Couper la pomme en deux, retirer le cœur et l’émincer finement. Dans une poêle, faire fondre ½ càc de beurre à feu moyen, ajouter l’oignon, la pomme et la cassonade, et faire sauter 10 minutes, jusqu’à ce que ce soit doré et caramélisé.",
+        "Beurrer légèrement une face de chaque tranche de pain.",
+        "Les œufs : faire fondre 1 càc de beurre dans une poêle antiadhésive à feu moyen (celle des oignons convient). Casser les œufs, saler et poivrer chacun. Cuire environ 3 minutes, jusqu’à ce que les blancs ne soient presque plus translucides. Retourner délicatement à la spatule, éteindre le feu, retirer la poêle et laisser reposer 30 secondes avant de sortir les œufs."
+      ]
+    },
+    {
+      "ph": "Montage et cuisson",
+      "items": [
+        "Chauffer une grande poêle ou une plancha à feu moyen. Sur la face non beurrée d’une tranche de pain, poser une tranche de cheddar, puis l’œuf, 2 tranches de bacon, une cuillerée d’oignons et pommes caramélisés, et une autre tranche de cheddar. Refermer avec une tranche de pain, face beurrée vers l’extérieur.",
+        "Cuire 2 minutes jusqu’à ce que le pain soit doré, retourner délicatement et cuire encore 1 à 2 minutes, jusqu’à ce que le fromage fonde et que le pain soit doré."
+      ]
+    }
+  ],
+  "notes": [
+    "Traduit de l’anglais. 400 °F convertis en 200 °C (204 °C exactement).",
+    "Le jaune est prévu coulant. Pour un jaune cuit, prolonger la cuisson des œufs d’une minute.",
+    "L’autrice utilise un pain sans gluten (Udi’s) et un cheddar blanc bio (Horizon) : marques américaines, remplaçables.",
+    "Les temps de cuisson ne changent pas automatiquement avec le nombre de personnes."
+  ]
+}

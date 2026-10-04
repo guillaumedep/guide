@@ -1,0 +1,76 @@
+{
+  "id": "grilled-cheese-poulet-buffalo",
+  "title": "Grilled cheese au poulet buffalo",
+  "cat": "viande",
+  "emoji": "🌶️",
+  "image": null,
+  "tags": ["Sandwich", "Poulet", "Épicé", "Poêle"],
+  "source": "Blog en anglais de Tracey, mars 2012, adapté de sa Buffalo Chicken Pizza — traduit",
+  "base": 2,
+  "baseNote": "La recette donne 2 sandwichs : base d’1 sandwich par personne supposée.",
+  "times": [
+    { "l": "Durée", "v": "non indiquée" }
+  ],
+  "groups": [
+    {
+      "t": "Sauce blanche",
+      "items": [
+        { "id": "w1", "n": "yaourt grec", "qty": 1, "u": "càs", "hint": "L’autrice utilise un yaourt 0 %." },
+        { "id": "w2", "n": "mayonnaise", "qty": 1, "u": "càs" },
+        { "id": "w3", "n": "pincée de sucre", "np": "pincées de sucre", "qty": 1, "r": "w" },
+        { "id": "w4", "n": "pincée d’ail en poudre", "np": "pincées d’ail en poudre", "qty": 1, "r": "w" },
+        { "id": "w5", "n": "sel et poivre", "fixed": "1 pincée de chaque" }
+      ]
+    },
+    {
+      "t": "Poulet buffalo",
+      "items": [
+        { "id": "u1", "n": "beurre doux", "qty": 1, "u": "càs" },
+        { "id": "u2", "n": "sauce piquante Frank’s (hot sauce)", "qty": 6, "u": "cl", "hint": "¼ cup dans la recette d’origine (≈ 59 ml)." },
+        { "id": "u3", "n": "cassonade tassée", "qty": 0.5, "u": "càc" },
+        { "id": "u4", "n": "vinaigre de cidre", "qty": 1, "u": "càc" },
+        { "id": "u5", "n": "petit blanc de poulet cuit et effiloché", "np": "petits blancs de poulet cuits et effilochés", "qty": 1, "hint": "¾ cup dans la recette d’origine, « environ 1 petit blanc »." },
+        { "id": "u6", "n": "oignon rouge haché", "qty": 2, "u": "càs" },
+        { "id": "u7", "n": "céleri haché", "qty": 2, "u": "càs" }
+      ]
+    },
+    {
+      "t": "Montage",
+      "items": [
+        { "id": "m1", "n": "tranche de pain italien de 1,3 cm d’épaisseur", "np": "tranches de pain italien de 1,3 cm d’épaisseur", "qty": 4, "r": "w" },
+        { "id": "m2", "n": "beurre doux à température ambiante", "qty": 1, "u": "càs" },
+        { "id": "m3", "n": "cheddar râpé", "qty": 85, "u": "g", "hint": "¾ cup dans la recette d’origine : 85 g est une conversion approximative." }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "ph": "Les sauces",
+      "items": [
+        "Sauce blanche : dans un petit bol, mélanger le yaourt, la mayonnaise, le sucre, l’ail en poudre et une pincée de sel et de poivre. (Elle peut être préparée à l’avance et gardée au frais.)",
+        "Poulet buffalo : faire fondre le beurre dans une petite casserole à feu moyen-doux. Ajouter la sauce piquante, la cassonade et le vinaigre, et mélanger. Ajouter le poulet effiloché, l’oignon rouge et le céleri, et bien enrober. Si le poulet était froid, laisser réchauffer un peu à feu doux."
+      ]
+    },
+    {
+      "ph": "Montage",
+      "items": [
+        "Beurrer légèrement une face de deux tranches de pain. Les retourner, côté beurré sur le plan de travail, et tartiner la face du dessus avec la moitié de la sauce blanche.",
+        "Répartir la moitié du cheddar sur ces deux tranches, puis la moitié du poulet sur chacune, et enfin le reste du cheddar.",
+        "Beurrer une face des deux tranches restantes, les retourner et tartiner l’autre face avec le reste de sauce blanche. Refermer chaque sandwich, côté beurré vers l’extérieur."
+      ]
+    },
+    {
+      "ph": "Cuisson",
+      "items": [
+        "Chauffer une poêle à fond épais à feu moyen. Poser les sandwichs côté beurré dessous et cuire jusqu’à ce que le pain soit doré.",
+        "Retourner à la spatule et cuire l’autre face jusqu’à ce qu’elle soit dorée, en pressant le sandwich avec la spatule.",
+        "Laisser reposer une à deux minutes, couper en deux si on le souhaite et servir."
+      ]
+    }
+  ],
+  "notes": [
+    "Traduit de l’anglais. Mesures américaines converties : cup en cl ou en grammes, tablespoon en cuillère à soupe, teaspoon en cuillère à café, ½ inch en 1,3 cm.",
+    "Le nom du blog n’apparaît pas sur la fiche ; l’autrice s’appelle Tracey d’après les commentaires.",
+    "L’autrice ne met pas de bleu (blue cheese) mais suggère d’en ajouter à la place du cheddar ou en plus."
+  ]
+}

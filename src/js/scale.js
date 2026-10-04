@@ -41,10 +41,17 @@ export function scaleItem(it, mult) {
     const f = x => Math.round(x / 5) * 5;
     return { q: NF.format(f(it.qty * mult)) + ' à ' + NF.format(f(it.qty2 * mult)) + ' ml', name: it.n };
   }
+  // g avec fourchette : « x à y g », chaque borne arrondie selon la règle des grammes
+  if (it.u === 'g' && it.qty2) {
+    const lo = fmtG(it.qty * mult), hi = fmtG(it.qty2 * mult);
+    const same = lo.endsWith(' g') === hi.endsWith(' g');
+    return { q: (same ? lo.replace(/ k?g$/, '') : lo) + ' à ' + hi, name: it.n };
+  }
   const v = it.qty * mult;
   if (it.u === 'g') return { q: fmtG(v), name: it.n };
   if (it.u === 'cl') return { q: fmtCl(v), name: it.n };
   if (it.u === 'càs') return { q: fracText(quarter(v)) + ' càs', name: it.n };
+  if (it.u === 'càc') return { q: fracText(quarter(v)) + ' càc', name: it.n };
   if (it.r === 'w') {
     const r = Math.max(1, Math.round(v));
     return { q: String(r), name: (r >= 2 && it.np) ? it.np : it.n };

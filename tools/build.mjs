@@ -23,7 +23,7 @@ const errors = [];
 const err = (file, msg) => errors.push(`${file} : ${msg}`);
 
 /* ---------- 1. Lecture et vérification des recettes ---------- */
-const UNITS = ['g', 'cl', 'ml', 'càs'];
+const UNITS = ['g', 'cl', 'ml', 'càs', 'càc'];
 const catIds = CATS.map(c => c.id);
 const isStr = v => typeof v === 'string' && v.trim() !== '';
 const isNum = v => typeof v === 'number' && Number.isFinite(v) && v > 0;
@@ -54,7 +54,7 @@ function validate(r, file) {
       if (it.fixed !== undefined) { if (!isStr(it.fixed)) e(`${w} : « fixed » doit être un texte (ex. "au goût")`); return; }
       if (!isNum(it.qty)) e(`${w} : « qty » doit être un nombre > 0 (ou utiliser "fixed": "au goût")`);
       if (it.u !== undefined && !UNITS.includes(it.u)) e(`${w} : unité « u » inconnue ${JSON.stringify(it.u)} (autorisées : ${UNITS.join(', ')}, ou rien pour des pièces)`);
-      if (it.qty2 !== undefined && (it.u !== 'ml' || !isNum(it.qty2))) e(`${w} : « qty2 » (fourchette) n’est géré qu’en ml, avec un nombre`);
+      if (it.qty2 !== undefined && (!['ml', 'g'].includes(it.u) || !isNum(it.qty2) || it.qty2 <= it.qty)) e(`${w} : « qty2 » (fourchette) n’est géré qu’en ml ou en g, avec un nombre plus grand que « qty »`);
       if (it.r !== undefined && it.r !== 'w') e(`${w} : « r » ne peut valoir que "w" (arrondi à l’entier)`);
     });
   });

@@ -55,6 +55,13 @@ test('règles d’arrondi (exemples explicites)', () => {
   assert.deepEqual(S.scaleItem({ n: 'sel', fixed: 'au goût' }, 3), { q: 'au goût', name: 'sel', fixed: true });
 });
 
+test('ajouts : cuillère à café et fourchette en grammes', () => {
+  assert.equal(S.scaleItem({ n: 'sucre', qty: 0.5, u: 'càc' }, 1).q, '½ càc');
+  assert.equal(S.scaleItem({ n: 'vinaigre', qty: 1, u: 'càc' }, 1.5).q, '1\u2009½ càc');
+  assert.equal(S.scaleItem({ n: 'beurre', qty: 20, qty2: 30, u: 'g' }, 1).q, '20 à 30 g');
+  assert.equal(S.scaleItem({ n: 'beurre', qty: 20, qty2: 30, u: 'g' }, 2).q, '40 à 60 g');
+});
+
 test('recherche insensible aux accents', () => {
   assert.equal(S.norm('Végétarien Œuf Crème'), 'vegetarien œuf creme');
 });

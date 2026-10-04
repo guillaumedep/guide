@@ -1,0 +1,50 @@
+{
+  "id": "flageolets-cuisines",
+  "title": "Flageolets cuisinés",
+  "cat": "accompagnement",
+  "emoji": "🫘",
+  "image": null,
+  "tags": ["Légumineuses", "Mijoté"],
+  "source": "Fiche imprimée (site non indiqué)",
+  "base": 4,
+  "baseNote": "La source donne les quantités « pour 1 kg de flageolets », sans nombre de personnes : base de 4 supposée, à confirmer.",
+  "total": "≈ 30 min",
+  "times": [
+    { "l": "Cuisson", "v": "≈ 25 min" }
+  ],
+  "groups": [
+    {
+      "t": "Ingrédients",
+      "items": [
+        { "id": "g1", "n": "flageolets frais ou surgelés", "qty": 1000, "u": "g" },
+        { "id": "g2", "n": "carotte moyenne", "np": "carottes moyennes", "qty": 2, "r": "w" },
+        { "id": "g3", "n": "petit oignon", "np": "petits oignons", "qty": 1, "r": "w" },
+        { "id": "g4", "n": "petit oignon blanc (grelot)", "np": "petits oignons blancs (grelots)", "qty": 4, "r": "w" },
+        { "id": "g5", "n": "huile d’olive", "qty": 1.5, "u": "càs" },
+        { "id": "g6", "n": "feuille de laurier", "np": "feuilles de laurier", "qty": 2, "r": "w" },
+        { "id": "g7", "n": "sarriette", "qty": 0.5, "u": "càc" },
+        { "id": "g8", "n": "romarin", "qty": 0.5, "u": "càc" },
+        { "id": "g9", "n": "thym moulu", "fixed": "un peu moins que le romarin" },
+        { "id": "g10", "n": "cube de bouillon de poule dégraissé", "np": "cubes de bouillon de poule dégraissés", "qty": 2, "r": "w" },
+        { "id": "g11", "n": "eau", "qty": 100, "u": "cl" }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "ph": "Préparation",
+      "items": [
+        "Chauffer l’eau à 100 °C dans une casserole et y faire infuser la sarriette, le romarin et le laurier avec les cubes de bouillon.",
+        "Éplucher les carottes, les couper en rondelles et les faire cuire dans de l’eau.",
+        "Émincer l’oignon et le faire revenir dans l’huile d’olive, puis ajouter les flageolets.",
+        "Remuer 1 minute, ajouter l’eau bouillante et bien mélanger. Ajouter le thym et les petits oignons blancs.",
+        "Laisser cuire environ 25 minutes, puis vérifier la cuisson et l’assaisonnement."
+      ]
+    }
+  ],
+  "notes": [
+    "Suggestion de la fiche : servir avec des grillades de mouton ou d’agneau, et un petit rosé bien frais.",
+    "La fiche fait cuire les carottes à part mais ne dit pas quand les ajouter aux flageolets.",
+    "Les temps de cuisson ne changent pas automatiquement avec le nombre de personnes."
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "grilled-cheese-americain",
+  "title": "Grilled cheese sandwich à l’américaine",
+  "cat": "vegetarien",
+  "emoji": "🥪",
+  "image": null,
+  "tags": ["Sandwich", "Rapide", "Poêle"],
+  "source": "Article « La vraie recette du Grilled Cheese Sandwich américain » (site non indiqué)",
+  "base": 1,
+  "baseNote": "La recette donne 1 sandwich : base d’1 sandwich par personne supposée.",
+  "total": "5 min",
+  "times": [
+    { "l": "Total annoncé", "v": "5 min" }
+  ],
+  "groups": [
+    {
+      "t": "Pour 1 sandwich",
+      "items": [
+        { "id": "a1", "n": "tranche de pain de mie (blanc, complet, céréales…)", "np": "tranches de pain de mie (blanc, complet, céréales…)", "qty": 2, "r": "w" },
+        { "id": "a2", "n": "fromage en tranches", "qty": 60, "u": "g", "hint": "Traditionnellement du cheddar ; comté, gouda, brebis ou emmental conviennent aussi." },
+        { "id": "a3", "n": "beurre", "qty": 20, "qty2": 30, "u": "g", "hint": "Le sortir du frigo 30 min avant pour qu’il s’étale bien." }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "ph": "Cuisson à la poêle",
+      "items": [
+        "Faire chauffer une poêle à feu moyen pendant la préparation du sandwich.",
+        "Beurrer une tranche de pain et la poser au fond de la poêle, côté beurré dessous.",
+        "Déposer les tranches de fromage sur ce pain.",
+        "Beurrer la seconde tranche et fermer le sandwich, côté beurré vers l’extérieur.",
+        "Après environ 2 minutes, glisser une spatule sous le sandwich, tenir la tranche du dessus avec l’autre main et le retourner.",
+        "Laisser cuire jusqu’à ce que la nouvelle face soit bien grillée et que le fromage ait fondu."
+      ]
+    }
+  ],
+  "notes": [
+    "À l’américaine, on le trempe dans un bol de soupe à la tomate (Campbell’s), préparée en même temps."
+  ]
+}

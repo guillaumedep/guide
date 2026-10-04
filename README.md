@@ -63,8 +63,8 @@ Les fichiers dont le nom commence par `_` sont ignorés.
 | `id` | identifiant unique dans la recette (sert à mémoriser la case cochée) |
 | `n` / `np` | nom au singulier / au pluriel (pluriel utilisé à partir de 2) |
 | `qty` | quantité pour `base` personnes |
-| `qty2` | haut de fourchette, en `ml` uniquement (« 80 à 100 ml ») |
-| `u` | `g`, `cl`, `ml`, `càs`, ou absent pour des pièces |
+| `qty2` | haut de fourchette, en `ml` ou en `g` (« 80 à 100 ml », « 20 à 30 g ») |
+| `u` | `g`, `cl`, `ml`, `càs` (cuillère à soupe), `càc` (cuillère à café), ou absent pour des pièces |
 | `r: "w"` | arrondi à l'entier, minimum 1 (œufs, gousses…) |
 | `fixed` | texte fixe qui ne se recalcule pas (« au goût », « 1 pincée ») |
 | `opt` | ingrédient facultatif |
@@ -76,7 +76,8 @@ Les fichiers dont le nom commence par `_` sont ignorés.
 - **g** : arrondi à 1 g (< 100), 5 g (100-199), 10 g (≥ 200) ; ≥ 1000 g → kg arrondi à 50 g.
 - **cl** : arrondi à 0,5 cl ; ≥ 100 cl → litres.
 - **ml avec fourchette** : « x à y ml », arrondi à 5.
-- **càs et pièces** : quarts (¼ ½ ¾) ; `r: "w"` → entier, minimum 1.
+- **g avec fourchette** : « x à y g », chaque borne arrondie comme les grammes.
+- **càs, càc et pièces** : quarts (¼ ½ ¾) ; `r: "w"` → entier, minimum 1.
 - Pluriel automatique à partir de 2. Nombres au format français.
 - Les temps de cuisson **ne changent pas** avec le nombre de personnes (rappel affiché dès qu'on s'écarte de la base).
 
