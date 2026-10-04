@@ -13,6 +13,25 @@ let RECIPES = [];
 let current = null;
 
 const plural = (n, s, p) => n > 1 ? p : s;
+// Mots japonais décoratifs (purement visuels, masqués aux lecteurs d'écran)
+const KANA = { viande: '肉', poisson: '魚', vegetarien: '菜食', entree: '前菜', accompagnement: '副菜', dessert: 'デザート' };
+const jp = t => `<span class="jp" aria-hidden="true">${t}</span>`;
+const TITLE_COLORS = ['var(--red)', 'var(--yellow)', 'var(--blue)', 'var(--green)', 'var(--purple)', 'var(--pink)', 'var(--orange)'];
+// Une couleur par lettre ; chaque mot reste insécable pour ne pas être coupé en fin de ligne
+const mangaTitle = txt => { let i = 0; return txt.split(' ').map(w => '<span class="w">' + [...w].map(ch => {
+  const k = i++; return `<span style="--c:${TITLE_COLORS[k % TITLE_COLORS.length]};--rot:${(k % 3 - 1) * 3}deg">${esc(ch)}</span>`;
+}).join('') + '</span>').join(' '); };
+// Mascotte onigiri (dessin vectoriel, pas de fichier externe)
+const MASCOT = `<svg class="mascot" viewBox="0 0 100 100" aria-hidden="true">
+  <path class="steam" d="M38 14c-4-5 4-8 0-13" fill="none" stroke="var(--line)" stroke-width="3" stroke-linecap="round"/>
+  <path class="steam" d="M62 14c-4-5 4-8 0-13" fill="none" stroke="var(--line)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M50 18c9 0 16 8 22 19l13 24c7 13 1 30-16 30H31C14 91 8 74 15 61l13-24c6-11 13-19 22-19z" fill="#fff" stroke="#1b1720" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M30 70h40v21H30z" fill="#1b1720"/><path d="M33 74h34v14H33z" fill="#2e6b4f"/>
+  <circle cx="38" cy="52" r="4.5" fill="#1b1720"/><circle cx="62" cy="52" r="4.5" fill="#1b1720"/>
+  <circle cx="39.5" cy="50.5" r="1.5" fill="#fff"/><circle cx="63.5" cy="50.5" r="1.5" fill="#fff"/>
+  <ellipse cx="29" cy="60" rx="6" ry="3.5" fill="#ff8fc2"/><ellipse cx="71" cy="60" rx="6" ry="3.5" fill="#ff8fc2"/>
+  <path d="M45 58q5 5 10 0" fill="none" stroke="#1b1720" stroke-width="3" stroke-linecap="round"/>
+</svg>`;
 const catOf = id => CATS.find(c => c.id === id) || { id, label: id, emoji: '🍽️' };
 
 // Vignette : image compressée si elle existe, sinon emoji sur fond décoré.
@@ -29,8 +48,11 @@ function renderHome() {
   const n = RECIPES.length;
   app.innerHTML = `
     <header class="top">
-      <h1>Mes recettes</h1>
-      <p class="sub">${n} recette${plural(n, '', 's')} au sommaire</p>
+      <div class="brand">${MASCOT}<div>
+        <h1 class="title" aria-label="Mes recettes">${mangaTitle('Mes recettes')}</h1>
+        <span class="kana-tag" aria-hidden="true">レシピ ・ いただきます！</span>
+      </div></div>
+      <p class="sub"><b>${n}</b> recette${plural(n, '', 's')} au sommaire</p>
       <label class="search"><span class="sr">Rechercher une recette</span>
         <input id="q" type="search" placeholder="Rechercher un plat, un ingrédient" autocomplete="off" enterkeyhint="search"></label>
     </header>
@@ -43,7 +65,7 @@ function renderHome() {
 function updateHome() {
   const counts = {};
   CATS.forEach(c => counts[c.id] = RECIPES.filter(r => r.cat === c.id).length);
-  const chip = (id, label, emoji, n) => `<button class="chip${n === 0 ? ' zero' : ''}" data-act="cat" data-cat="${id}" aria-pressed="${state.cat === id}">${emoji ? emoji + ' ' : ''}${esc(label)} <span class="c">${n}</span></button>`;
+  const chip = (id, label, emoji, n) => `<button class="chip cat-${id}${n === 0 ? ' zero' : ''}" data-act="cat" data-cat="${id}" aria-pressed="${state.cat === id}">${emoji ? emoji + ' ' : ''}${esc(label)} <span class="c">${n}</span></button>`;
   // Les catégories vides restent affichées.
   document.getElementById('chips').innerHTML = chip('all', 'Toutes', '', RECIPES.length) + CATS.map(c => chip(c.id, c.label, c.emoji, counts[c.id])).join('');
   const q = norm(state.q.trim());
@@ -54,9 +76,9 @@ function updateHome() {
     return hay.includes(q);
   };
   const found = RECIPES.filter(match);
-  const row = r => `<a class="row" href="#/r/${encodeURIComponent(r.id)}">${thumb(r)}
+  const row = r => `<a class="row cat-${esc(r.cat)}" href="#/r/${encodeURIComponent(r.id)}">${thumb(r)}
     <span><span class="t">${esc(r.title)}</span>
-    <span class="pills"><span class="pill">${esc(catOf(r.cat).label)}</span>${r.tags.slice(0, 1).map(t => `<span class="pill">${esc(t)}</span>`).join('')}${r.total ? `<span class="pill saf">${esc(r.total)}</span>` : ''}</span></span></a>`;
+    <span class="pills"><span class="pill cat">${esc(catOf(r.cat).label)}</span>${r.tags.slice(0, 1).map(t => `<span class="pill">${esc(t)}</span>`).join('')}${r.total ? `<span class="pill saf">${esc(r.total)}</span>` : ''}</span></span></a>`;
   let html = '';
   if (!found.length) {
     html = q ? `<div class="empty">Aucune recette ne correspond à « ${esc(state.q.trim())} ».</div>`
@@ -65,7 +87,7 @@ function updateHome() {
     html = CATS.map(c => {
       const rs = found.filter(r => r.cat === c.id);
       if (!rs.length) return '';
-      return `<section class="grp"><h2>${c.emoji} ${esc(c.label)} <span class="c">${rs.length}</span></h2>${rs.map(row).join('')}</section>`;
+      return `<section class="grp cat-${c.id}"><h2>${c.emoji} ${esc(c.label)} ${jp(KANA[c.id])} <span class="c">${rs.length}</span></h2>${rs.map(row).join('')}</section>`;
     }).join('');
   } else {
     html = `<section class="grp">${found.map(row).join('')}</section>`;
@@ -97,12 +119,12 @@ function renderRecipe(r) {
     ? `<button class="toggle" data-act="wake" aria-pressed="${!!wakeLock}">☀️ Garder l’écran allumé</button>` : '';
   app.innerHTML = `
     <div class="bar"><a class="back" href="#/">‹ Sommaire</a></div>
-    <article>
+    <article class="cat-${esc(r.cat)}">
       <div class="rhead">
         ${hero}
         <div>
-          <h1 class="rt">${esc(r.title)}</h1>
-          <div class="pills"><span class="pill">${esc(catOf(r.cat).label)}</span>${r.tags.map(t => `<span class="pill">${esc(t)}</span>`).join('')}${r.source ? `<span class="pill saf">${esc(r.source)}</span>` : ''}</div>
+          <h1 class="rt"><span>${esc(r.title)}</span></h1>
+          <div class="pills"><span class="pill cat">${esc(catOf(r.cat).label)}</span>${r.tags.map(t => `<span class="pill">${esc(t)}</span>`).join('')}${r.source ? `<span class="pill saf">${esc(r.source)}</span>` : ''}</div>
           ${r.times && r.times.length ? `<dl class="times">${r.times.map(t => `<div><dt>${esc(t.l)}</dt><dd>${esc(t.v)}</dd></div>`).join('')}</dl>` : ''}
           ${wake ? `<div class="tools">${wake}</div>` : ''}
         </div>
@@ -110,7 +132,7 @@ function renderRecipe(r) {
 
       <div class="rbody">
         <section class="ings-col">
-          <div class="sh"><h2>Ingrédients</h2><button class="link" data-act="uncheck">Tout décocher</button></div>
+          <div class="sh"><h2>Ingrédients ${jp('材料')}</h2><button class="link" data-act="uncheck">Tout décocher</button></div>
           <div class="stepper" role="group" aria-label="Nombre de personnes">
             <button class="rnd" data-act="minus" aria-label="Une personne de moins">−</button>
             <div class="count"><output id="serv" aria-live="polite"></output><span id="servlab"></span></div>
@@ -121,12 +143,12 @@ function renderRecipe(r) {
         </section>
 
         <section>
-          <div class="sh"><h2>Préparation</h2></div>
+          <div class="sh"><h2>Préparation ${jp('作り方')}</h2></div>
           ${steps}
         </section>
 
         ${r.notes && r.notes.length ? `<section class="notes">
-          <div class="sh"><h2>À savoir</h2></div>
+          <div class="sh"><h2>À savoir ${jp('メモ')}</h2></div>
           <ul>${r.notes.map(n => `<li>${esc(n)}</li>`).join('')}</ul>
         </section>` : ''}
       </div>

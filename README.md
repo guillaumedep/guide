@@ -99,7 +99,7 @@ Arborescence :
     test/              tests du calcul et de la migration
     prototype/         fichier d'origine, gardé comme référence
 
-Polices Bricolage Grotesque et Newsreader auto-hébergées (licence SIL OFL 1.1, fichiers dans `src/fonts/`) pour fonctionner hors ligne.
+Polices Mochiy Pop One (titres) et M PLUS Rounded 1c (texte) auto-hébergées (licence SIL OFL 1.1, fichiers dans `src/fonts/`) pour fonctionner hors ligne.
 
 ## Sauvegarde
 
