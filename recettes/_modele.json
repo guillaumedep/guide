@@ -1,0 +1,39 @@
+{
+  "id": "nom-de-la-recette",
+  "title": "Nom affiché de la recette",
+  "cat": "vegetarien",
+  "emoji": "🍲",
+  "image": null,
+  "tags": ["Mijoté", "Au four"],
+  "source": "Livre, site, vidéo…",
+  "base": 4,
+  "baseNote": "Base de 4 personnes, indiquée dans la source.",
+  "total": "1 h",
+  "times": [
+    { "l": "Préparation", "v": "20 min" },
+    { "l": "Cuisson", "v": "40 min" }
+  ],
+  "groups": [
+    {
+      "t": "Ingrédients",
+      "items": [
+        { "id": "i1", "n": "farine", "qty": 250, "u": "g" },
+        { "id": "i2", "n": "lait", "qty": 50, "u": "cl" },
+        { "id": "i3", "n": "eau", "qty": 80, "qty2": 100, "u": "ml" },
+        { "id": "i4", "n": "huile d’olive", "qty": 2, "u": "càs" },
+        { "id": "i5", "n": "œuf", "np": "œufs", "qty": 3, "r": "w" },
+        { "id": "i6", "n": "oignon", "np": "oignons", "qty": 1.5 },
+        { "id": "i7", "n": "persil", "qty": 1, "r": "w", "opt": true },
+        { "id": "i8", "n": "tomates", "qty": 400, "u": "g", "warn": "Quantité à vérifier dans la source." },
+        { "id": "i9", "n": "sel et poivre", "fixed": "au goût" }
+      ]
+    }
+  ],
+  "steps": [
+    { "ph": "Préparation", "items": ["Première étape.", "Deuxième étape."] },
+    { "ph": "Cuisson", "items": ["Enfourner 40 minutes à 180 °C."] }
+  ],
+  "notes": [
+    "Les temps de cuisson ne changent pas automatiquement avec le nombre de personnes."
+  ]
+}

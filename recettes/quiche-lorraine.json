@@ -1,0 +1,55 @@
+{
+  "id": "quiche-lorraine",
+  "title": "Quiche lorraine",
+  "cat": "viande",
+  "emoji": "🥓",
+  "image": null,
+  "tags": ["Quiche", "Au four"],
+  "source": "Fiche PDF",
+  "base": 4,
+  "baseNote": "Le nombre de personnes n’est pas indiqué dans le PDF : base de 4 supposée, à confirmer.",
+  "total": "1 h",
+  "times": [
+    { "l": "Préparation", "v": "15 min" },
+    { "l": "Cuisson", "v": "45 min" },
+    { "l": "Temps total", "v": "1 h" }
+  ],
+  "groups": [
+    {
+      "t": "Ingrédients",
+      "items": [
+        { "id": "l1", "n": "pâte brisée", "qty": 200, "u": "g" },
+        { "id": "l2", "n": "lardons", "qty": 200, "u": "g" },
+        { "id": "l3", "n": "beurre", "qty": 30, "u": "g" },
+        { "id": "l4", "n": "œuf", "np": "œufs", "qty": 3, "r": "w" },
+        { "id": "l5", "n": "crème fraîche", "qty": 20, "u": "cl" },
+        { "id": "l6", "n": "lait", "qty": 20, "u": "cl" },
+        { "id": "l7", "n": "sel", "fixed": "au goût" },
+        { "id": "l8", "n": "poivre", "fixed": "au goût" },
+        { "id": "l9", "n": "muscade", "fixed": "au goût" }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "ph": "Préparation",
+      "items": [
+        "Préchauffer le four à 180 °C (thermostat 6).",
+        "Étaler la pâte dans un moule et la piquer à la fourchette. Parsemer de copeaux de beurre.",
+        "Faire rissoler les lardons à la poêle.",
+        "Battre les œufs, la crème fraîche et le lait. Ajouter les lardons.",
+        "Assaisonner de sel, de poivre et de muscade."
+      ]
+    },
+    {
+      "ph": "Cuisson",
+      "items": ["Verser la préparation sur la pâte.", "Cuire 45 à 50 minutes."]
+    }
+  ],
+  "notes": [
+    "Source d’origine non indiquée dans le PDF.",
+    "Le PDF annonce 45 min de cuisson en en-tête, mais 45 à 50 min dans l’étape : les deux ne concordent pas exactement.",
+    "Le PDF ne précise pas si la pâte brisée est maison ou du commerce, ni la taille du moule.",
+    "Les temps de cuisson ne changent pas automatiquement avec le nombre de personnes."
+  ]
+}
