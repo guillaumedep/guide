@@ -1,4 +1,5 @@
 import { CATS, norm, scaleItem } from './scale.js';
+import { findRecipes, suggestions, BASICS, words } from './frigo.js';
 
 /* ---------- État ---------- */
 const app = document.getElementById('app');
@@ -10,6 +11,7 @@ const store = {
 };
 const state = { cat: 'all', q: '' };
 let RECIPES = [];
+let TIPS = [];   // astuces de cuisine (data/astuces.json)
 let current = null;
 
 const plural = (n, s, p) => n > 1 ? p : s;
@@ -42,6 +44,12 @@ const thumb = r => r.thumb
   : tile(r, 'thumb');
 const heroTile = r => `<div class="hero tile"><span class="plate" aria-hidden="true">${r.emoji || '🍽️'}</span><span class="cap"><span>Le visuel s’affichera ici</span></span></div>`;
 
+// Carte d'une recette dans une liste (accueil, frigo). « extra » : contenu ajouté sous les étiquettes.
+const row = (r, extra = '') => `<a class="row cat-${esc(r.cat)}" href="#/r/${encodeURIComponent(r.id)}">${thumb(r)}
+    <span><span class="t">${esc(r.title)}</span>
+    <span class="pills"><span class="pill cat">${esc(catOf(r.cat).label)}</span>${r.tags.slice(0, 1).map(t => `<span class="pill">${esc(t)}</span>`).join('')}${r.total ? `<span class="pill saf">${esc(r.total)}</span>` : ''}</span>${extra}</span></a>`;
+const backBar = () => `<div class="bar"><a class="back" href="#/">‹ Sommaire</a></div>`;
+
 /* ---------- Accueil ---------- */
 function renderHome() {
   document.title = 'Mes recettes';
@@ -55,6 +63,7 @@ function renderHome() {
       <p class="sub"><b>${n}</b> recette${plural(n, '', 's')} au sommaire</p>
       <label class="search"><span class="sr">Rechercher une recette</span>
         <input id="q" type="search" placeholder="Rechercher un plat, un ingrédient" autocomplete="off" enterkeyhint="search"></label>
+      <a class="frigo-cta" href="#/frigo"><span class="ico" aria-hidden="true">🧺</span><span><b>Qu’est-ce que je peux cuisiner ?</b><small>Dis-moi ce que tu as, je trouve les recettes</small></span><span class="go" aria-hidden="true">›</span></a>
     </header>
     <nav class="chips" id="chips" aria-label="Thèmes"></nav>
     <main id="list"></main>`;
@@ -76,9 +85,6 @@ function updateHome() {
     return hay.includes(q);
   };
   const found = RECIPES.filter(match);
-  const row = r => `<a class="row cat-${esc(r.cat)}" href="#/r/${encodeURIComponent(r.id)}">${thumb(r)}
-    <span><span class="t">${esc(r.title)}</span>
-    <span class="pills"><span class="pill cat">${esc(catOf(r.cat).label)}</span>${r.tags.slice(0, 1).map(t => `<span class="pill">${esc(t)}</span>`).join('')}${r.total ? `<span class="pill saf">${esc(r.total)}</span>` : ''}</span></span></a>`;
   let html = '';
   if (!found.length) {
     html = q ? `<div class="empty">Aucune recette ne correspond à « ${esc(state.q.trim())} ».</div>`
@@ -92,7 +98,92 @@ function updateHome() {
   } else {
     html = `<section class="grp">${found.map(row).join('')}</section>`;
   }
+  // Astuces : seulement sur l'accueil « Toutes », hors recherche
+  if (state.cat === 'all' && !q && TIPS.length) html = tipsSection() + html;
   document.getElementById('list').innerHTML = html;
+}
+
+/* ---------- Astuces de cuisine ---------- */
+const tipCount = th => th.items.length;
+const tipsSection = () => `<section class="tips-home" aria-labelledby="tips-h">
+  <h2 id="tips-h" class="tips-title">💡 Astuces de cuisine ${jp('コツ')}</h2>
+  <div class="tip-grid">${TIPS.map(th => `<a class="tip-card c-${esc(th.color)}" href="#/astuces/${encodeURIComponent(th.id)}">
+    <span class="tip-emoji" aria-hidden="true">${th.emoji}</span><span class="tip-name">${esc(th.t)}</span>
+    <span class="tip-n">${tipCount(th)} astuce${plural(tipCount(th), '', 's')}</span></a>`).join('')}</div>
+</section>`;
+
+function renderTips(th) {
+  document.title = th.t + ' · Astuces';
+  // Numérotation continue sur l'ensemble des thèmes, comme dans la liste d'origine
+  let start = 1;
+  for (const x of TIPS) { if (x === th) break; start += x.items.length; }
+  app.innerHTML = `${backBar()}
+    <article class="tips-page c-${esc(th.color)}">
+      <h1 class="tips-h1"><span aria-hidden="true">${th.emoji}</span> ${esc(th.t)}</h1>
+      <ol class="tips" start="${start}">${th.items.map((it, i) => `<li class="tip">
+        <span class="n" aria-hidden="true">${start + i}</span>
+        <div><h2>${esc(it.t)}</h2>${it.p ? `<p>${esc(it.p)}</p>` : ''}${it.li ? `<ul>${it.li.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}</div>
+      </li>`).join('')}</ol>
+      <nav class="tip-nav" aria-label="Autres thèmes d’astuces">${TIPS.filter(x => x !== th).map(x =>
+        `<a class="chip c-${esc(x.color)}" href="#/astuces/${encodeURIComponent(x.id)}">${x.emoji} ${esc(x.t)}</a>`).join('')}</nav>
+    </article>`;
+}
+
+/* ---------- Frigo : qu'est-ce que je peux cuisiner ? ---------- */
+const frigo = {
+  get have() { return store.get('frigo:have', []); },
+  set have(v) { store.set('frigo:have', v); },
+  get basics() { return store.get('frigo:basics', true); },
+  set basics(v) { store.set('frigo:basics', v); }
+};
+function renderFrigo() {
+  document.title = 'Qu’est-ce que je peux cuisiner ?';
+  app.innerHTML = `${backBar()}
+    <article class="frigo">
+      <h1 class="tips-h1">🧺 Qu’est-ce que je peux cuisiner ? ${jp('冷蔵庫')}</h1>
+      <p class="sub">Ajoute ce que tu as sous la main. Les recettes les plus proches apparaissent en premier, avec ce qu’il manque.</p>
+      <form class="frigo-add" id="frigo-form" autocomplete="off">
+        <label class="search"><span class="sr">Ajouter un ingrédient</span>
+          <input id="frigo-in" type="text" placeholder="Ex. : œufs, tomates, lardons…" enterkeyhint="done"></label>
+        <button class="toggle add" type="submit">Ajouter</button>
+      </form>
+      <div id="frigo-have" class="have"></div>
+      <label class="basics"><input type="checkbox" id="frigo-basics"> J’ai le placard de base : ${BASICS.join(', ')}</label>
+      <details class="sugg"><summary>Idées d’ingrédients</summary><div id="frigo-sugg" class="sugg-list"></div></details>
+      <section id="frigo-res"></section>
+    </article>`;
+  document.getElementById('frigo-basics').checked = frigo.basics;
+  updateFrigo();
+}
+function updateFrigo() {
+  const have = frigo.have;
+  document.getElementById('frigo-have').innerHTML = have.length
+    ? have.map((h, i) => `<button class="chip have-chip" data-act="frigo-del" data-i="${i}" aria-label="Retirer ${esc(h)}">${esc(h)} <span aria-hidden="true">✕</span></button>`).join('')
+      + `<button class="link" data-act="frigo-clear">Tout effacer</button>`
+    : '<p class="hint">Rien pour l’instant.</p>';
+  // Comparaison normalisée : « oeufs » et « œufs » sont le même ingrédient
+  const key = x => words(x).join(' ');
+  const haveKeys = new Set(have.map(key));
+  document.getElementById('frigo-sugg').innerHTML = suggestions(RECIPES).filter(s => !haveKeys.has(key(s))).map(s =>
+    `<button class="chip" data-act="frigo-sugg" data-v="${esc(s)}">+ ${esc(s)}</button>`).join('');
+  const res = findRecipes(RECIPES, have, frigo.basics);
+  const box = document.getElementById('frigo-res');
+  if (!have.length) { box.innerHTML = ''; return; }
+  if (!res.length) { box.innerHTML = `<div class="empty">Aucune recette n’utilise ces ingrédients. Essaie un autre mot (au singulier ou au pluriel, ça marche pareil).</div>`; return; }
+  const full = res.filter(m => !m.missing.length).length;
+  box.innerHTML = `<h2 class="res-h">${full ? `${full} recette${plural(full, '', 's')} faisable${plural(full, '', 's')} tout de suite` : 'Les plus proches'} ${jp('おすすめ')}</h2>
+    <div class="grp">${res.map(m => row(m.r, `<span class="match">
+      <span class="meter" role="img" aria-label="${m.ok.length} ingrédients sur ${m.total}"><span style="width:${Math.round(m.score * 100)}%"></span></span>
+      <span class="mtxt">${m.missing.length ? `Il manque : ${esc(m.missing.map(i => i.n).join(', '))}` : '✓ Tu as tout !'}</span></span>`)).join('')}</div>
+    <p class="hint">Les ingrédients « au goût » et facultatifs ne sont pas comptés.</p>`;
+}
+function addHave(v) {
+  const items = String(v).split(/[,;\n]+/).map(x => x.trim()).filter(Boolean);
+  if (!items.length) return;
+  const key = x => words(x).join(' ');
+  const have = frigo.have, keys = new Set(have.map(key));
+  for (const x of items) if (!keys.has(key(x))) { have.push(x); keys.add(key(x)); }
+  frigo.have = have; updateFrigo();
 }
 
 /* ---------- Fiche recette ---------- */
@@ -212,6 +303,9 @@ document.addEventListener('click', e => {
   const a = t.dataset.act, r = current;
   if (a === 'cat') { state.cat = t.dataset.cat; updateHome(); return; }
   if (a === 'reload') { location.reload(); return; }
+  if (a === 'frigo-del') { const h = frigo.have; h.splice(+t.dataset.i, 1); frigo.have = h; updateFrigo(); return; }
+  if (a === 'frigo-clear') { frigo.have = []; updateFrigo(); return; }
+  if (a === 'frigo-sugg') { addHave(t.dataset.v); return; }
   if (!r) return;
   if (a === 'plus' || a === 'minus') {
     const s = servings(r) + (a === 'plus' ? 1 : -1);
@@ -237,6 +331,15 @@ document.addEventListener('keydown', e => {
     e.preventDefault(); e.target.click();
   }
 });
+document.addEventListener('submit', e => {
+  if (e.target.id !== 'frigo-form') return;
+  e.preventDefault();
+  const inp = document.getElementById('frigo-in');
+  addHave(inp.value); inp.value = ''; inp.focus();
+});
+document.addEventListener('change', e => {
+  if (e.target.id === 'frigo-basics') { frigo.basics = e.target.checked; updateFrigo(); }
+});
 document.addEventListener('input', e => {
   if (e.target.id === 'q') { state.q = e.target.value; updateHome(); }
 });
@@ -249,10 +352,18 @@ document.addEventListener('error', e => {
 }, true);
 
 function route() {
-  const m = location.hash.match(/^#\/r\/(.+)$/);
+  const h = location.hash;
+  const m = h.match(/^#\/r\/(.+)$/);
   const r = m && RECIPES.find(x => x.id === decodeURIComponent(m[1]));
+  const mt = h.match(/^#\/astuces\/(.+)$/);
+  const th = mt && TIPS.find(x => x.id === decodeURIComponent(mt[1]));
   if (r) { current = r; renderRecipe(r); }
-  else { current = null; if (wakeLock) setWake(false); renderHome(); }
+  else {
+    current = null; if (wakeLock) setWake(false);
+    if (th) renderTips(th);
+    else if (h === '#/frigo') renderFrigo();
+    else renderHome();
+  }
   window.scrollTo(0, 0);
 }
 // Chaque écran s'ouvre en haut de page (pas de restauration automatique du défilement).
@@ -271,6 +382,8 @@ async function start() {
       <button class="toggle" data-act="reload">Réessayer</button></div>`;
     return;
   }
+  // Astuces : facultatives, l'appli fonctionne sans
+  try { const t = await fetch('data/astuces.json'); if (t.ok) TIPS = (await t.json()).themes || []; } catch (e) {}
   route();
 }
 start();

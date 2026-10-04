@@ -258,3 +258,69 @@ ul.ings{list-style:none;padding:0;margin:0}
   .bump .qty,.mascot .steam{animation:none}
   .row,.chip,.rnd,.back{transition:none}
 }
+
+/* ---------- Astuces de cuisine ---------- */
+.c-yellow{--cat:var(--yellow)} .c-red{--cat:var(--red)} .c-green{--cat:var(--green)} .c-blue{--cat:var(--blue)}
+.tips-home{margin-top:26px}
+.tips-title{font-size:1.45rem;margin:0 0 14px;display:flex;align-items:center;gap:10px}
+.tips-title .jp,.tips-h1 .jp,.res-h .jp{font-size:.8rem;background:var(--ink);color:var(--bg);padding:2px 8px;border-radius:7px;transform:rotate(-4deg);letter-spacing:.06em}
+.tip-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.tip-card{
+  display:flex;flex-direction:column;gap:4px;min-height:118px;padding:14px;text-decoration:none;color:#1b1720;
+  background:var(--cat);border:var(--b) solid var(--line);border-radius:var(--r);box-shadow:4px 4px 0 var(--shadow);
+  background-image:radial-gradient(rgba(255,255,255,.35) 1.5px,transparent 1.8px);background-size:10px 10px;
+  transition:transform .12s ease,box-shadow .12s ease
+}
+.tip-card:nth-child(odd){transform:rotate(-1deg)} .tip-card:nth-child(even){transform:rotate(1deg)}
+.tip-card:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--shadow)}
+.tip-emoji{font-size:2rem;line-height:1}
+.tip-name{font-family:var(--display);font-size:1.05rem;line-height:1.2}
+.tip-n{margin-top:auto;font-size:.8rem;font-weight:800;background:#fff;border:2px solid #1b1720;border-radius:999px;padding:1px 9px;width:fit-content}
+.tips-h1{font-size:clamp(1.6rem,7vw,2.2rem);margin:14px 0 18px;display:flex;align-items:center;flex-wrap:wrap;gap:10px}
+.tips-page .tips-h1{background:var(--cat);color:#1b1720;border:var(--b) solid var(--line);box-shadow:5px 5px 0 var(--shadow);border-radius:16px;padding:10px 18px;transform:rotate(-1deg);width:fit-content}
+.tips{list-style:none;padding:0;margin:0;display:grid;gap:16px}
+.tip{display:grid;grid-template-columns:44px 1fr;gap:12px;padding:16px;background:var(--card);border:var(--b) solid var(--line);border-radius:var(--r);box-shadow:4px 4px 0 var(--shadow)}
+.tip .n{width:42px;height:42px;border-radius:50%;background:var(--cat);color:#1b1720;border:var(--b) solid var(--line);display:grid;place-items:center;font-family:var(--display)}
+.tip h2{font-size:1.12rem;line-height:1.3;margin:6px 0 6px}
+.tip p{margin:0;line-height:1.65}
+.tip ul{margin:6px 0 0;padding-left:20px;display:grid;gap:8px;line-height:1.6}
+.tip ul li::marker{color:var(--ink)}
+.tip-nav{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.tip-nav .chip{text-decoration:none;background:var(--cat);color:#1b1720}
+
+/* ---------- Frigo ---------- */
+.frigo-cta{
+  grid-column:1/-1;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;margin-top:12px;min-height:64px;padding:10px 16px;
+  background:var(--green);color:#1b1720;text-decoration:none;border:var(--b) solid var(--line);border-radius:var(--r);box-shadow:4px 4px 0 var(--shadow);
+  transform:rotate(-.5deg)
+}
+.frigo-cta:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--shadow)}
+.frigo-cta .ico{font-size:2rem}
+.frigo-cta b{display:block;font-family:var(--display);font-weight:400;font-size:1.05rem;line-height:1.25}
+.frigo-cta small{display:block;font-weight:700;font-size:.85rem}
+.frigo-cta .go{font-family:var(--display);font-size:1.8rem}
+.frigo .tips-h1{background:var(--green);color:#1b1720;border:var(--b) solid var(--line);box-shadow:5px 5px 0 var(--shadow);border-radius:16px;padding:10px 18px;transform:rotate(-1deg);width:fit-content}
+.frigo .sub{margin:0 0 14px}
+.frigo-add{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}
+.frigo-add .search{margin:0;grid-column:auto}
+.frigo-add .search::before{content:"🥕"}
+.toggle.add{background:var(--yellow);color:#1b1720;min-height:52px}
+.have{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 6px;align-items:center}
+.have-chip{background:var(--yellow);color:#1b1720}
+.hint{color:var(--muted);font-size:.9rem;margin:6px 2px}
+.basics{display:flex;align-items:center;gap:10px;min-height:44px;font-weight:700;font-size:.92rem;cursor:pointer}
+.basics input{width:24px;height:24px;accent-color:var(--green);flex:none}
+.sugg{margin:8px 0 4px}
+.sugg summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:800;list-style:none}
+.sugg summary::-webkit-details-marker{display:none}
+.sugg summary::before{content:"▸";margin-right:8px;transition:transform .15s}
+.sugg[open] summary::before{transform:rotate(90deg)}
+.sugg-list{display:flex;flex-wrap:wrap;gap:8px;padding:4px 2px 8px}
+.sugg-list .chip{box-shadow:2px 2px 0 var(--shadow);font-size:.85rem;padding:0 12px}
+.res-h{font-size:1.3rem;margin:26px 0 14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.match{display:block;margin-top:8px}
+.meter{display:block;height:12px;border:2px solid var(--line);border-radius:999px;background:var(--paper);overflow:hidden}
+.meter span{display:block;height:100%;background:var(--green)}
+.mtxt{display:block;font-size:.84rem;font-weight:700;color:var(--muted);margin-top:4px;line-height:1.4}
+@media (min-width:900px){ .tip-grid{grid-template-columns:repeat(4,1fr)} .tips-page,.frigo{max-width:760px} }
+@media (prefers-reduced-motion:reduce){ .tip-card,.frigo-cta{transition:none} .sugg summary::before{transition:none} }

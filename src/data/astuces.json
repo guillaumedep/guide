@@ -1,0 +1,105 @@
+{
+  "themes": [
+    {
+      "id": "avant",
+      "t": "Avant de cuire",
+      "emoji": "🔪",
+      "color": "yellow",
+      "items": [
+        {
+          "t": "Mise en place",
+          "p": "Pèse, épluche et coupe tout, aligne les ustensiles, puis allume le feu. Coupe en morceaux de taille similaire, sinon certains compotent pendant que d’autres restent crus."
+        },
+        {
+          "t": "Saler la viande la veille ou juste avant, jamais entre les deux.",
+          "p": "Le sel fait sortir l’eau, puis la chair la réabsorbe, mais ça prend des heures. Salée 10 à 30 min avant, la surface reste mouillée."
+        },
+        {
+          "t": "Sécher viande, poisson, légumes lavés, pommes de terre rincées, champignons au papier absorbant.",
+          "p": "Tant qu’il reste de l’eau en surface, ça ne dépasse pas 100 °C et ça ne colore pas."
+        }
+      ]
+    },
+    {
+      "id": "cuisson",
+      "t": "À la cuisson",
+      "emoji": "🔥",
+      "color": "red",
+      "items": [
+        {
+          "t": "Préchauffer la poêle et ne pas la surcharger.",
+          "li": [
+            "Préchauffe 2 à 4 min à feu moyen (plus long pour inox, acier carbone, fonte), évite la pleine puissance sur inox et acier.",
+            "Ajoute le gras quand l’huile ondule et devient fluide.",
+            "Une seule couche d’ingrédients, avec de l’espace entre les morceaux. Trop de morceaux d’un coup font chuter la température, l’eau ne s’évapore plus et tout cuit à la vapeur. Fais plusieurs fournées si besoin."
+          ]
+        },
+        {
+          "t": "Épices : gras ou sec selon la forme.",
+          "li": [
+            "Moulues (cumin, paprika, curry, piment) : 30 à 60 s dans du gras chaud avant le reste, jamais plus d’une minute à feu moyen. Leurs arômes sont liposolubles, donc ils se diffusent dans le gras. Brûlées, elles deviennent amères.",
+            "Entières (cumin, coriandre, fenouil, moutarde, fenugrec, cardamome) : torréfaction à sec, 2 à 3 min à feu moyen en remuant, jusqu’à ce que ça embaume, puis broyer. Jamais d’épice en poudre en poêle sèche.",
+            "Tu peux enchaîner : torréfier, moudre, puis faire revenir dans l’huile."
+          ]
+        },
+        {
+          "t": "Déglacer",
+          "p": "Après avoir saisi, verse un liquide (vin, bouillon, vinaigre, crème liquide, même de l’eau) dans la poêle encore chaude et gratte les résidus bruns. Laisse réduire, ajoute un peu de beurre hors du feu. Exemple : steak et échalotes, déglacer au cognac, puis crème et poivre."
+        },
+        {
+          "t": "Mantecatura (pâtes)",
+          "p": "Cuis 1 minute de moins qu’indiqué, garde une louche d’eau de cuisson, finis dans la sauce avec un peu de cette eau. Hors du feu, ajoute huile d’olive, beurre ou fromage et remue énergiquement environ 20 s. L’amidon émulsionne, la sauce devient crémeuse."
+        },
+        {
+          "t": "Umami pour les soupes et sauces",
+          "p": "Croûte de parmesan (au congélateur), concentré de tomates en début de mijotage, anchois fondu, champignons séchés, sauce soja, miso. Ça donne de la profondeur, pas un goût de fromage ou de poisson."
+        }
+      ]
+    },
+    {
+      "id": "assaisonner",
+      "t": "Assaisonner et équilibrer",
+      "emoji": "🧂",
+      "color": "green",
+      "items": [
+        {
+          "t": "Assaisonner par couches",
+          "p": "Sale un peu à chaque étape (oignons, puis légumes, puis sauce), pas seulement à la fin. Le sel ajouté en dernier reste en surface et le cœur reste fade. Pas de sel en excès pour autant."
+        },
+        {
+          "t": "Goûter à chaque étape, pas seulement à la fin.",
+          "p": "Les recettes sont des guides : saison, provenance et fraîcheur changent le sucre, l’acidité et la concentration des ingrédients. Garde la cuillère à portée dès le début."
+        },
+        {
+          "t": "Acidité en fin de cuisson",
+          "p": "Filet de citron, trait de vinaigre, cuillère de moutarde juste avant de servir. Utile pour les plats mijotés longtemps (exemple : vinaigre balsamique dans une bolognaise). Si un plat est lourd ou plat sans que tu saches pourquoi, c’est souvent ça."
+        },
+        {
+          "t": "Contraste de textures",
+          "p": "Croquant sur fondant, crémeux sur sec. Exemples : croûtons sur un velouté, fruits secs torréfiés sur une salade, oignons frits sur un curry, chapelure sur des pâtes gratinées, graines sur des légumes rôtis. Règle : tout est mou → ajoute du croquant, tout est sec → ajoute du crémeux."
+        }
+      ]
+    },
+    {
+      "id": "servir",
+      "t": "Servir et rattraper",
+      "emoji": "🍽️",
+      "color": "blue",
+      "items": [
+        {
+          "t": "Trancher perpendiculairement aux fibres (couteau à 90° des lignes).",
+          "p": "Utile pour bavette, onglet, hampe, poitrine, blanc de poulet, peu pour un filet déjà tendre."
+        },
+        {
+          "t": "Rattraper un plat (seulement pour des excès raisonnables)",
+          "li": [
+            "Trop salé : diluer avec du liquide non salé ou plus de base. La pomme de terre qui absorbe le sel est un mythe. Sinon, le servir avec du neutre (riz, pâtes, purée) ou jouer sur un acide et un peu de gras.",
+            "Trop épicé : gras (crème, yaourt, lait de coco, beurre, fromage) ou un peu de sucre. L’eau ne sert à rien.",
+            "Trop acide : une pincée de sucre, ou une toute petite pointe de bicarbonate (sinon ça mousse et goûte le savon).",
+            "Plat vraiment raté : recommencer."
+          ]
+        }
+      ]
+    }
+  ]
+}
