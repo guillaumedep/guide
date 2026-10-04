@@ -1,0 +1,46 @@
+{
+  "id": "gratin-courgettes-rapide",
+  "title": "Gratin de courgettes rapide",
+  "cat": "accompagnement",
+  "emoji": "🥒",
+  "image": null,
+  "tags": ["Gratin", "Végétarien", "Au four"],
+  "source": "Marmiton, recette proposée par mijo",
+  "base": 4,
+  "baseNote": "Base de 4 personnes, indiquée dans la source.",
+  "total": "30 min",
+  "times": [
+    { "l": "Préparation", "v": "15 min" },
+    { "l": "Cuisson", "v": "15 min" }
+  ],
+  "groups": [
+    {
+      "t": "Ingrédients",
+      "items": [
+        { "id": "c1", "n": "courgette", "np": "courgettes", "qty": 4, "r": "w" },
+        { "id": "c2", "n": "oignon", "np": "oignons", "qty": 3, "r": "w" },
+        { "id": "c3", "n": "gruyère râpé", "qty": 100, "u": "g" },
+        { "id": "c4", "n": "œuf", "np": "œufs", "qty": 2, "r": "w" },
+        { "id": "c5", "n": "crème fraîche", "qty": 2, "u": "càs" },
+        { "id": "c6", "n": "noix de beurre", "np": "noix de beurre", "qty": 1 },
+        { "id": "c7", "n": "sel et poivre", "fixed": "au goût" }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "ph": "Préparation",
+      "items": [
+        "Émincer les oignons et les faire fondre dans le beurre.",
+        "Râper les courgettes avec leur peau et les ajouter aux oignons.",
+        "Mélanger le gruyère râpé, les œufs et la crème fraîche, puis saler et poivrer.",
+        "Mettre les courgettes dans un plat, verser la sauce par-dessus et enfourner à four chaud pendant 15 minutes."
+      ]
+    }
+  ],
+  "notes": [
+    "Source : fiche Marmiton imprimée.",
+    "La recette dit « four chaud » sans donner de température.",
+    "Les temps de cuisson ne changent pas automatiquement avec le nombre de personnes."
+  ]
+}

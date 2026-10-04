@@ -1,0 +1,50 @@
+{
+  "id": "salade-landaise",
+  "title": "Salade landaise (la vraie !)",
+  "cat": "entree",
+  "emoji": "🦆",
+  "image": null,
+  "tags": ["Salade", "Canard", "Foie gras"],
+  "source": "Marmiton",
+  "base": 1,
+  "baseNote": "Base d’1 personne (1 assiette), indiquée dans la source.",
+  "total": "25 min",
+  "times": [
+    { "l": "Préparation", "v": "20 min" },
+    { "l": "Cuisson", "v": "5 min" }
+  ],
+  "groups": [
+    {
+      "t": "Pour une assiette",
+      "items": [
+        { "id": "d1", "n": "feuilles de salade frisée", "qty": 10, "r": "w" },
+        { "id": "d2", "n": "tranche de foie gras de canard", "np": "tranches de foie gras de canard", "qty": 2, "r": "w", "hint": "La préparation dit « 1 ou 2 tranches »." },
+        { "id": "d3", "n": "tranche de jambon de Bayonne", "np": "tranches de jambon de Bayonne", "qty": 1, "r": "w" },
+        { "id": "d4", "n": "asperge blanche", "np": "asperges blanches", "qty": 5, "r": "w", "hint": "La préparation dit « 5 ou 6 belles asperges »." },
+        { "id": "d5", "n": "tranche de magret de canard fumé", "np": "tranches de magret de canard fumé", "qty": 5, "r": "w" },
+        { "id": "d6", "n": "maïs", "qty": 2, "u": "càs" },
+        { "id": "d7", "n": "tomate", "np": "tomates", "qty": 1, "r": "w" },
+        { "id": "d8", "n": "gésier de canard", "np": "gésiers de canard", "qty": 2, "r": "w" },
+        { "id": "d9", "n": "pignons", "qty": 1, "u": "càs" },
+        { "id": "d10", "n": "assaisonnement", "fixed": "au goût" }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "ph": "Pour une assiette",
+      "items": [
+        "Mettre quelques feuilles de frisée dans une grande assiette.",
+        "Placer au centre 1 ou 2 tranches de foie gras de canard.",
+        "Autour, disposer la tranche de jambon de Bayonne roulée, les asperges blanches, les tranches de magret fumé, le maïs et la tomate coupée en fines tranches.",
+        "Dans une poêle, faire sauter les gésiers coupés en morceaux. Au bout de 2 minutes, ajouter les pignons.",
+        "Verser le tout dans l’assiette. Assaisonner et servir aussitôt."
+      ]
+    }
+  ],
+  "notes": [
+    "Source : fiche Marmiton imprimée.",
+    "La fiche ne précise pas l’assaisonnement.",
+    "Les temps de cuisson ne changent pas automatiquement avec le nombre de personnes."
+  ]
+}

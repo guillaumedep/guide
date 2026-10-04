@@ -1,0 +1,60 @@
+{
+  "id": "salade-pommes-de-terre-cervelas",
+  "title": "Salade tiède de pommes de terre au cervelas",
+  "cat": "entree",
+  "emoji": "🥔",
+  "image": null,
+  "tags": ["Salade", "Tiède"],
+  "source": "Marmiton, recette proposée par Famille Quentin",
+  "base": 4,
+  "baseNote": "Base de 4 personnes, indiquée dans la source.",
+  "total": "1 h",
+  "times": [
+    { "l": "Préparation", "v": "30 min" },
+    { "l": "Cuisson", "v": "30 min" }
+  ],
+  "groups": [
+    {
+      "t": "La salade",
+      "items": [
+        { "id": "s1", "n": "cervelas", "np": "cervelas", "qty": 2, "r": "w" },
+        { "id": "s2", "n": "œuf", "np": "œufs", "qty": 2, "r": "w" },
+        { "id": "s3", "n": "pommes de terre", "qty": 1000, "u": "g" },
+        { "id": "s4", "n": "cornichon", "np": "cornichons", "qty": 4, "r": "w" },
+        { "id": "s5", "n": "bouquet de persil", "np": "bouquets de persil", "qty": 0.5 },
+        { "id": "s6", "n": "échalote", "np": "échalotes", "qty": 1, "r": "w" },
+        { "id": "s7", "n": "vin blanc sec", "qty": 5, "u": "cl" }
+      ]
+    },
+    {
+      "t": "La vinaigrette",
+      "items": [
+        { "id": "v1", "n": "huile", "qty": 3, "u": "càs" },
+        { "id": "v2", "n": "vinaigre", "qty": 2, "u": "càs" },
+        { "id": "v3", "n": "moutarde", "qty": 1, "u": "càs" },
+        { "id": "v4", "n": "sel et poivre", "fixed": "au goût" }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "ph": "Cuissons",
+      "items": [
+        "Cuire les pommes de terre 30 minutes à l’eau bouillante salée.",
+        "Cuire les œufs durs, 10 minutes à l’eau bouillante. Pocher les cervelas 10 minutes à l’eau bouillante également."
+      ]
+    },
+    {
+      "ph": "Assemblage",
+      "items": [
+        "Hacher l’échalote, les cornichons et le persil. Mélanger la moutarde avec l’huile, le vinaigre, du sel et du poivre.",
+        "Peler les pommes de terre et les couper en rondelles. Les arroser aussitôt de vin blanc. Ajouter les œufs durs coupés en quartiers et le cervelas pelé et coupé en cubes.",
+        "Parsemer de cornichons, d’échalote et de persil hachés. Verser la vinaigrette et mélanger délicatement."
+      ]
+    }
+  ],
+  "notes": [
+    "Source : fiche Marmiton imprimée.",
+    "Les temps de cuisson ne changent pas automatiquement avec le nombre de personnes."
+  ]
+}

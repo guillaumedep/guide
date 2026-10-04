@@ -1,0 +1,43 @@
+{
+  "id": "salade-carottes-amandes-thon",
+  "title": "Salade de carottes râpées aux amandes et au thon",
+  "cat": "entree",
+  "emoji": "🥕",
+  "image": null,
+  "tags": ["Salade", "Sans cuisson"],
+  "source": "Marmiton",
+  "base": 4,
+  "baseNote": "Base de 4 personnes, indiquée dans la source.",
+  "total": "30 min",
+  "times": [
+    { "l": "Préparation", "v": "30 min" },
+    { "l": "Cuisson", "v": "aucune" }
+  ],
+  "groups": [
+    {
+      "t": "Ingrédients",
+      "items": [
+        { "id": "k1", "n": "belle carotte", "np": "belles carottes", "qty": 5, "r": "w" },
+        { "id": "k2", "n": "boîte de thon", "np": "boîtes de thon", "qty": 1, "r": "w" },
+        { "id": "k3", "n": "citron", "np": "citrons", "qty": 1 },
+        { "id": "k4", "n": "amandes entières", "qty": 150, "u": "g" },
+        { "id": "k5", "n": "coriandre hachée", "qty": 2, "u": "càs" },
+        { "id": "k6", "n": "gousse d’ail", "np": "gousses d’ail", "qty": 2, "r": "w" },
+        { "id": "k7", "n": "sel et poivre", "fixed": "au goût" },
+        { "id": "k8", "n": "huile d’olive", "fixed": "un filet" }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "ph": "Préparation",
+      "items": [
+        "Râper les carottes. Ajouter le thon, les amandes, la coriandre et l’ail finement hachés, un filet d’huile d’olive, puis saler et poivrer."
+      ]
+    }
+  ],
+  "notes": [
+    "Source : fiche Marmiton imprimée.",
+    "Le citron figure dans les ingrédients mais la préparation ne dit pas quand l’utiliser."
+  ]
+}

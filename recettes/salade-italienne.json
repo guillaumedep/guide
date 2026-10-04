@@ -1,0 +1,56 @@
+{
+  "id": "salade-italienne",
+  "title": "Salade légère à l’italienne",
+  "cat": "entree",
+  "emoji": "🧀",
+  "image": null,
+  "tags": ["Salade", "Sans cuisson"],
+  "source": "Marmiton",
+  "base": 4,
+  "baseNote": "Base de 4 personnes, indiquée dans la source.",
+  "total": "15 min",
+  "times": [
+    { "l": "Préparation", "v": "15 min" },
+    { "l": "Cuisson", "v": "aucune" }
+  ],
+  "groups": [
+    {
+      "t": "La salade",
+      "items": [
+        { "id": "i1", "n": "pissenlit", "qty": 300, "u": "g" },
+        { "id": "i2", "n": "mozzarella", "qty": 250, "u": "g", "hint": "Soit 2 boules pour 4 personnes." },
+        { "id": "i3", "n": "tranche de jambon cru italien", "np": "tranches de jambon cru italien", "qty": 4, "r": "w" },
+        { "id": "i4", "n": "tomate", "np": "tomates", "qty": 2, "r": "w" }
+      ]
+    },
+    {
+      "t": "La vinaigrette",
+      "items": [
+        { "id": "i5", "n": "vinaigre de cidre", "qty": 2, "u": "càs" },
+        { "id": "i6", "n": "huile d’olive", "qty": 5, "u": "càs" },
+        { "id": "i7", "n": "sel et poivre", "fixed": "au goût" }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "ph": "Préparation",
+      "items": [
+        "Laver les feuilles de pissenlit et les essorer soigneusement.",
+        "Couper les tranches de jambon en lamelles.",
+        "Laver les tomates, les couper en quartiers, puis retirer les pépins et le jus.",
+        "Prélever des petites boules de mozzarella et les enrouler dans les lamelles de jambon cru.",
+        "Sur un plat de service ou directement dans les assiettes, disposer le pissenlit, les quartiers de tomate et les boules de mozzarella au jambon."
+      ]
+    },
+    {
+      "ph": "Vinaigrette et service",
+      "items": [
+        "Dans un bol, verser le vinaigre, le sel et le poivre, puis l’huile peu à peu, en filet, en battant à la fourchette.",
+        "Saler et poivrer légèrement le pissenlit, puis l’arroser de vinaigrette. Présenter le reste de vinaigrette à part, dans un bol.",
+        "Servir bien frais."
+      ]
+    }
+  ],
+  "notes": ["Source : fiche Marmiton imprimée."]
+}

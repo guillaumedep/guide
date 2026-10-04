@@ -1,0 +1,50 @@
+{
+  "id": "blanc-poulet-flageolets",
+  "title": "Blanc de poulet émincé aux flageolets",
+  "cat": "viande",
+  "emoji": "🍗",
+  "image": null,
+  "tags": ["Poulet", "Mijoté"],
+  "source": "Fiche imprimée (site non indiqué)",
+  "base": 2,
+  "baseNote": "Base de 2 personnes, indiquée dans la source.",
+  "times": [
+    { "l": "Durée", "v": "non indiquée" }
+  ],
+  "groups": [
+    {
+      "t": "Ingrédients",
+      "items": [
+        { "id": "p1", "n": "escalope de poulet", "np": "escalopes de poulet", "qty": 2, "r": "w" },
+        { "id": "p2", "n": "flageolets", "qty": 200, "u": "g" },
+        { "id": "p3", "n": "champignons de Paris émincés", "qty": 200, "u": "g" },
+        { "id": "p4", "n": "gousse d’ail", "np": "gousses d’ail", "qty": 2, "r": "w" },
+        { "id": "p5", "n": "oignon", "np": "oignons", "qty": 1, "r": "w" },
+        { "id": "p6", "n": "huile d’olive", "qty": 2, "u": "càs" },
+        { "id": "p7", "n": "gros verre d’eau", "np": "gros verres d’eau", "qty": 1 },
+        { "id": "p8", "n": "sel et poivre gris", "fixed": "au goût" }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "ph": "Préparation",
+      "items": [
+        "Couper l’oignon en dés et les gousses d’ail en très petits morceaux. Couper les escalopes de poulet en morceaux."
+      ]
+    },
+    {
+      "ph": "Cuisson",
+      "items": [
+        "Verser l’huile d’olive dans une petite marmite antiadhésive, ajouter l’oignon et l’ail et les faire revenir à feu doux jusqu’à ce qu’ils brunissent (étape essentielle).",
+        "Ajouter le poulet émincé et monter le feu au maximum. Mélanger sans arrêt en salant et poivrant à convenance, jusqu’à ce que les morceaux soient bien cuits.",
+        "Ajouter les champignons et les flageolets, puis un gros verre d’eau pour déglacer. Laisser mijoter jusqu’à ce que l’eau réduise en une sauce brune et onctueuse."
+      ]
+    }
+  ],
+  "notes": [
+    "La fiche ne donne pas de temps de préparation ni de cuisson.",
+    "Boisson conseillée par la fiche : un vin de Bourgogne.",
+    "Les temps de cuisson ne changent pas automatiquement avec le nombre de personnes."
+  ]
+}

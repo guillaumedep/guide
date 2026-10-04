@@ -1,0 +1,44 @@
+{
+  "id": "grilled-cheese-jambon-cornichons-chips",
+  "title": "Grilled cheese jambon, cornichons et chips",
+  "cat": "viande",
+  "emoji": "🥪",
+  "image": null,
+  "tags": ["Sandwich", "Rapide", "Poêle"],
+  "source": "Joy the Baker (blog en anglais), 23/10/2011 — traduit",
+  "base": 1,
+  "baseNote": "La recette donne 1 sandwich : base d’1 sandwich par personne supposée.",
+  "times": [
+    { "l": "Durée", "v": "non indiquée" }
+  ],
+  "groups": [
+    {
+      "t": "Pour 1 sandwich",
+      "items": [
+        { "id": "h1", "n": "tranche de pain de mie", "np": "tranches de pain de mie", "qty": 2, "r": "w" },
+        { "id": "h2", "n": "moutarde de Dijon", "fixed": "au goût" },
+        { "id": "h3", "n": "cheddar en fines tranches", "fixed": "au goût" },
+        { "id": "h4", "n": "fine tranche de jambon", "np": "fines tranches de jambon", "qty": 5, "r": "w", "hint": "« Environ 5 » dans la recette." },
+        { "id": "h5", "n": "cornichons à l’aneth en rondelles", "fixed": "au goût" },
+        { "id": "h6", "n": "poignée de chips salées", "np": "poignées de chips salées", "qty": 1 },
+        { "id": "h7", "n": "beurre (pour griller)", "qty": 1, "u": "càs" }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "ph": "Préparation",
+      "items": [
+        "Faire fondre le beurre dans une poêle à feu moyen.",
+        "Tartiner de moutarde l’intérieur des deux tranches de pain. Garnir de fromage, de jambon, de cornichons, de chips, puis encore de fromage.",
+        "Refermer en pressant bien. Faire griller dans le beurre fondu des deux côtés, jusqu’à ce que le pain soit doré et le fromage fondu.",
+        "Couper en deux et servir immédiatement, avant que les chips ne ramollissent."
+      ]
+    }
+  ],
+  "notes": [
+    "Traduit de l’anglais.",
+    "La recette d’origine dit « spread mustard over both sides of bread », ce qui peut se lire comme les deux tranches ou les deux faces : interprété comme l’intérieur des deux tranches.",
+    "Les quantités de moutarde, de fromage et de cornichons sont laissées au goût par l’autrice."
+  ]
+}
