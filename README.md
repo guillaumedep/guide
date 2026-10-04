@@ -43,7 +43,9 @@ Les fichiers dont le nom commence par `_` sont ignorés.
 |---|---|
 | `id` | identifiant, identique au nom du fichier |
 | `title` | titre affiché |
-| `cat` | `viande`, `poisson`, `vegetarien`, `entree`, `accompagnement`, `dessert` |
+| `cat` | `cocktail`, `entree`, `plat`, `accompagnement`, `snack`, `dessert` (ordre d'affichage) |
+| `sous` | filtres de la catégorie, ex. `["poulet"]`. Cocktail : `avec-alcool`, `sans-alcool` · Entrée : `salade`, `viande`, `poisson`, `vegetarien` · Plat : `boeuf`, `porc`, `veau`, `poulet`, `poisson`, `vegetarien` · Accompagnement : `legumes`, `legumineuses`, `feculents`, `vegetarien` · Snack : `sandwich`, `vegetarien` · Dessert : `chocolat`, `fruits`, `gateau` |
+| `vedette` | `true` pour faire partie des 4 plats affichés sur l'accueil (sinon : ceux qui ont une image, par ordre alphabétique) |
 | `emoji` | affiché tant qu'il n'y a pas d'image |
 | `image` | `null` (image trouvée automatiquement par l'`id`) ou nom d'un fichier de `images/` |
 | `tags` | liste de mots-clés |

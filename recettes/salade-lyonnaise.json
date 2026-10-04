@@ -2,6 +2,7 @@
   "id": "salade-lyonnaise",
   "title": "Salade lyonnaise",
   "cat": "entree",
+  "sous": ["salade", "viande"],
   "emoji": "🥗",
   "image": null,
   "tags": ["Salade", "Œuf poché"],

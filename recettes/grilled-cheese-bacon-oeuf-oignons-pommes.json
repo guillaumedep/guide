@@ -1,7 +1,8 @@
 {
   "id": "grilled-cheese-bacon-oeuf-oignons-pommes",
   "title": "Grilled cheese bacon et œuf, oignons et pommes caramélisés",
-  "cat": "viande",
+  "cat": "snack",
+  "sous": ["sandwich"],
   "emoji": "🥓",
   "image": null,
   "tags": ["Sandwich", "Œuf", "Poêle"],

@@ -9,14 +9,17 @@ const store = {
   get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
 };
-const state = { cat: 'all', q: '' };
+const state = { q: '' };
+// Filtres de chaque page de catégorie (gardés pendant la session)
+const catState = {};
+const fstate = id => (catState[id] ??= { q: '', facet: 'all', quick: false });
 let RECIPES = [];
 let TIPS = [];   // astuces de cuisine (data/astuces.json)
 let current = null;
 
 const plural = (n, s, p) => n > 1 ? p : s;
 // Mots japonais décoratifs (purement visuels, masqués aux lecteurs d'écran)
-const KANA = { viande: '肉', poisson: '魚', vegetarien: '菜食', entree: '前菜', accompagnement: '副菜', dessert: 'デザート' };
+const KANA = { cocktail: 'カクテル', entree: '前菜', plat: '主菜', accompagnement: '副菜', snack: '軽食', dessert: 'デザート' };
 const jp = t => `<span class="jp" aria-hidden="true">${t}</span>`;
 const TITLE_COLORS = ['var(--red)', 'var(--yellow)', 'var(--blue)', 'var(--green)', 'var(--purple)', 'var(--pink)', 'var(--orange)'];
 // Une couleur par lettre ; chaque mot reste insécable pour ne pas être coupé en fin de ligne
@@ -34,7 +37,7 @@ const MASCOT = `<svg class="mascot" viewBox="0 0 100 100" aria-hidden="true">
   <ellipse cx="29" cy="60" rx="6" ry="3.5" fill="#ff8fc2"/><ellipse cx="71" cy="60" rx="6" ry="3.5" fill="#ff8fc2"/>
   <path d="M45 58q5 5 10 0" fill="none" stroke="#1b1720" stroke-width="3" stroke-linecap="round"/>
 </svg>`;
-const catOf = id => CATS.find(c => c.id === id) || { id, label: id, emoji: '🍽️' };
+const catOf = id => CATS.find(c => c.id === id) || { id, label: id, emoji: '🍽️', facets: [] };
 
 // Vignette : image compressée si elle existe, sinon emoji sur fond décoré.
 // data-fb : en cas d'échec de chargement, on revient à l'emoji (voir écouteur 'error').
@@ -47,8 +50,29 @@ const heroTile = r => `<div class="hero tile"><span class="plate" aria-hidden="t
 // Carte d'une recette dans une liste (accueil, frigo). « extra » : contenu ajouté sous les étiquettes.
 const row = (r, extra = '') => `<a class="row cat-${esc(r.cat)}" href="#/r/${encodeURIComponent(r.id)}">${thumb(r)}
     <span><span class="t">${esc(r.title)}</span>
-    <span class="pills"><span class="pill cat">${esc(catOf(r.cat).label)}</span>${r.tags.slice(0, 1).map(t => `<span class="pill">${esc(t)}</span>`).join('')}${r.total ? `<span class="pill saf">${esc(r.total)}</span>` : ''}</span>${extra}</span></a>`;
+    <span class="pills"><span class="pill cat">${esc(catOf(r.cat).label)}</span>${(r.sous || []).slice(0, 2).map(x => `<span class="pill">${esc(facetLabel(r.cat, x))}</span>`).join('')}${r.total ? `<span class="pill saf">${esc(r.total)}</span>` : ''}</span>${extra}</span></a>`;
 const backBar = () => `<div class="bar"><a class="back" href="#/">‹ Sommaire</a></div>`;
+
+/* ---------- Outils de liste ---------- */
+// Durée totale en minutes, lue dans « total » (« 1 h 15 », « ≈ 4 h 30 », « 55 min ») ; null si absente
+function minutes(r) {
+  const t = String(r.total || '');
+  const h = t.match(/(\d+)\s*h\s*(\d+)?/), m = t.match(/(\d+)\s*min/);
+  if (h) return +h[1] * 60 + (h[2] ? +h[2] : 0);
+  return m ? +m[1] : null;
+}
+const QUICK = 30;
+// Recherche : sans accents, et « oe » = « œ » (« oeuf » trouve « œuf »)
+const nq = x => norm(x).replace(/œ/g, 'oe').replace(/æ/g, 'ae');
+const hay = r => [r.title, ...r.tags, catOf(r.cat).label, ...(r.sous || []).map(x => facetLabel(r.cat, x)),
+  ...r.groups.flatMap(g => g.items.flatMap(i => [i.n, i.np || '']))].map(nq).join(' ');
+const facetLabel = (cat, id) => (catOf(cat).facets || []).find(f => f.id === id)?.label || id;
+// 4 plats « vitrine » : d'abord ceux marqués vedette, puis ceux qui ont une image
+const showcase = rs => [...rs].sort((a, b) => (!!b.vedette - !!a.vedette) || (!!b.thumb - !!a.thumb) || a.title.localeCompare(b.title, 'fr')).slice(0, 4);
+const mini = r => `<a class="mini cat-${esc(r.cat)}" href="#/r/${encodeURIComponent(r.id)}">
+    ${r.thumb ? `<span class="mimg"><img src="${esc(r.thumb)}" alt="" loading="lazy" decoding="async" data-fb="thumb" data-emoji="${esc(r.emoji || '')}"></span>` : `<span class="mimg tile" aria-hidden="true">${r.emoji || '🍽️'}</span>`}
+    <span class="mt">${esc(r.title)}</span>${r.total ? `<span class="pill saf">${esc(r.total)}</span>` : ''}</a>`;
+const byCat = id => RECIPES.filter(r => r.cat === id);
 
 /* ---------- Accueil ---------- */
 function renderHome() {
@@ -65,42 +89,64 @@ function renderHome() {
         <input id="q" type="search" placeholder="Rechercher un plat, un ingrédient" autocomplete="off" enterkeyhint="search"></label>
       <a class="frigo-cta" href="#/frigo"><span class="ico" aria-hidden="true">🧺</span><span><b>Qu’est-ce que je peux cuisiner ?</b><small>Dis-moi ce que tu as, je trouve les recettes</small></span><span class="go" aria-hidden="true">›</span></a>
     </header>
-    <nav class="chips" id="chips" aria-label="Thèmes"></nav>
+    <nav class="chips" aria-label="Catégories">${CATS.map(c => `<a class="chip cat-${c.id}${byCat(c.id).length ? '' : ' zero'}" href="#/c/${c.id}">${c.emoji} ${esc(c.label)} <span class="c">${byCat(c.id).length}</span></a>`).join('')}</nav>
     <main id="list"></main>`;
   document.getElementById('q').value = state.q;
   updateHome();
 }
 
 function updateHome() {
-  const counts = {};
-  CATS.forEach(c => counts[c.id] = RECIPES.filter(r => r.cat === c.id).length);
-  const chip = (id, label, emoji, n) => `<button class="chip cat-${id}${n === 0 ? ' zero' : ''}" data-act="cat" data-cat="${id}" aria-pressed="${state.cat === id}">${emoji ? emoji + ' ' : ''}${esc(label)} <span class="c">${n}</span></button>`;
-  // Les catégories vides restent affichées.
-  document.getElementById('chips').innerHTML = chip('all', 'Toutes', '', RECIPES.length) + CATS.map(c => chip(c.id, c.label, c.emoji, counts[c.id])).join('');
-  const q = norm(state.q.trim());
-  const match = r => {
-    if (state.cat !== 'all' && r.cat !== state.cat) return false;
-    if (!q) return true;
-    const hay = [r.title, ...r.tags, catOf(r.cat).label, ...r.groups.flatMap(g => g.items.flatMap(i => [i.n, i.np || '']))].map(norm).join(' ');
-    return hay.includes(q);
-  };
-  const found = RECIPES.filter(match);
-  let html = '';
-  if (!found.length) {
-    html = q ? `<div class="empty">Aucune recette ne correspond à « ${esc(state.q.trim())} ».</div>`
-             : `<div class="empty">Aucune recette dans ce thème pour l’instant.</div>`;
-  } else if (state.cat === 'all') {
-    html = CATS.map(c => {
-      const rs = found.filter(r => r.cat === c.id);
-      if (!rs.length) return '';
-      return `<section class="grp cat-${c.id}"><h2>${c.emoji} ${esc(c.label)} ${jp(KANA[c.id])} <span class="c">${rs.length}</span></h2>${rs.map(row).join('')}</section>`;
-    }).join('');
+  const q = nq(state.q.trim());
+  let html;
+  if (q) {
+    // Recherche globale : résultats toutes catégories confondues
+    const found = RECIPES.filter(r => hay(r).includes(q));
+    html = found.length ? `<h2 class="res-h">${found.length} résultat${plural(found.length, '', 's')}</h2><section class="grp">${found.map(r => row(r)).join('')}</section>`
+      : `<div class="empty">Aucune recette ne correspond à « ${esc(state.q.trim())} ».</div>`;
   } else {
-    html = `<section class="grp">${found.map(row).join('')}</section>`;
+    // Une section par catégorie (même vide), 4 plats représentatifs, puis lien vers la catégorie
+    html = CATS.map(c => {
+      const rs = byCat(c.id);
+      return `<section class="cat-sec cat-${c.id}">
+        <a class="cat-band" href="#/c/${c.id}"><h2>${c.emoji} ${esc(c.label)} ${jp(KANA[c.id])} <span class="c">${rs.length}</span></h2><span class="go" aria-hidden="true">›</span></a>
+        ${rs.length ? `<div class="mini-grid">${showcase(rs).map(mini).join('')}</div>
+          <a class="see-all" href="#/c/${c.id}">${rs.length > 4 ? `Voir les ${rs.length} recettes` : 'Voir la catégorie'} et les filtres ›</a>`
+        : `<div class="empty small">Aucune recette pour l’instant.</div>`}
+      </section>`;
+    }).join('') + (TIPS.length ? tipsSection() : '');
   }
-  // Astuces : seulement sur l'accueil « Toutes », hors recherche
-  if (state.cat === 'all' && !q && TIPS.length) html = tipsSection() + html;
   document.getElementById('list').innerHTML = html;
+}
+
+/* ---------- Page d'une catégorie ---------- */
+function renderCategory(c) {
+  document.title = c.label + ' · Mes recettes';
+  const st = fstate(c.id);
+  app.innerHTML = `${backBar()}
+    <article class="cat-page cat-${c.id}">
+      <h1 class="tips-h1 cat-title">${c.emoji} ${esc(c.label)} ${jp(KANA[c.id])}</h1>
+      <label class="search"><span class="sr">Rechercher dans ${esc(c.label)}</span>
+        <input id="cq" type="search" placeholder="Rechercher dans « ${esc(c.label)} »" autocomplete="off" enterkeyhint="search"></label>
+      <div class="facets" id="facets" role="group" aria-label="Filtres"></div>
+      <div id="clist"></div>
+    </article>`;
+  document.getElementById('cq').value = st.q;
+  updateCategory(c);
+}
+function updateCategory(c) {
+  const st = fstate(c.id), all = byCat(c.id), q = nq(st.q.trim());
+  const inFacet = (r, f) => f === 'all' || (r.sous || []).includes(f);
+  const isQuick = r => { const m = minutes(r); return m != null && m <= QUICK; };
+  const base = all.filter(r => (!q || hay(r).includes(q)) && (!st.quick || isQuick(r)));
+  const chip = (id, label, n) => `<button class="chip${n ? '' : ' zero'}" data-act="facet" data-cat="${c.id}" data-f="${id}" aria-pressed="${st.facet === id}">${esc(label)} <span class="c">${n}</span></button>`;
+  document.getElementById('facets').innerHTML =
+    chip('all', 'Tout', base.length) + c.facets.map(f => chip(f.id, f.label, base.filter(r => inFacet(r, f.id)).length)).join('')
+    + `<button class="chip quick" data-act="quick" data-cat="${c.id}" aria-pressed="${st.quick}">⏱ ${QUICK} min max</button>`;
+  const found = base.filter(r => inFacet(r, st.facet));
+  const fl = st.facet === 'all' ? '' : ` · ${facetLabel(c.id, st.facet)}`;
+  document.getElementById('clist').innerHTML = found.length
+    ? `<p class="count-line">${found.length} recette${plural(found.length, '', 's')}${esc(fl)}${st.quick ? ` · ${QUICK} min max` : ''}</p><section class="grp">${found.map(r => row(r)).join('')}</section>`
+    : `<div class="empty">${all.length ? 'Aucune recette avec ces filtres.' : `Aucune recette dans « ${esc(c.label)} » pour l’instant.`}</div>`;
 }
 
 /* ---------- Astuces de cuisine ---------- */
@@ -209,13 +255,13 @@ function renderRecipe(r) {
   const wake = 'wakeLock' in navigator
     ? `<button class="toggle" data-act="wake" aria-pressed="${!!wakeLock}">☀️ Garder l’écran allumé</button>` : '';
   app.innerHTML = `
-    <div class="bar"><a class="back" href="#/">‹ Sommaire</a></div>
+    <div class="bar"><a class="back" href="#/c/${esc(r.cat)}">‹ ${esc(catOf(r.cat).label)}</a></div>
     <article class="cat-${esc(r.cat)}">
       <div class="rhead">
         ${hero}
         <div>
           <h1 class="rt"><span>${esc(r.title)}</span></h1>
-          <div class="pills"><span class="pill cat">${esc(catOf(r.cat).label)}</span>${r.tags.map(t => `<span class="pill">${esc(t)}</span>`).join('')}${r.source ? `<span class="pill saf">${esc(r.source)}</span>` : ''}</div>
+          <div class="pills"><span class="pill cat">${esc(catOf(r.cat).label)}</span>${(r.sous || []).map(x => `<span class="pill">${esc(facetLabel(r.cat, x))}</span>`).join('')}${r.tags.map(t => `<span class="pill">${esc(t)}</span>`).join('')}${r.source ? `<span class="pill saf">${esc(r.source)}</span>` : ''}</div>
           ${r.times && r.times.length ? `<dl class="times">${r.times.map(t => `<div><dt>${esc(t.l)}</dt><dd>${esc(t.v)}</dd></div>`).join('')}</dl>` : ''}
           ${wake ? `<div class="tools">${wake}</div>` : ''}
         </div>
@@ -301,7 +347,11 @@ document.addEventListener('click', e => {
   const t = e.target.closest('[data-act]');
   if (!t) return;
   const a = t.dataset.act, r = current;
-  if (a === 'cat') { state.cat = t.dataset.cat; updateHome(); return; }
+  if (a === 'facet' || a === 'quick') {
+    const c = catOf(t.dataset.cat), st = fstate(c.id);
+    if (a === 'facet') st.facet = t.dataset.f; else st.quick = !st.quick;
+    updateCategory(c); return;
+  }
   if (a === 'reload') { location.reload(); return; }
   if (a === 'frigo-del') { const h = frigo.have; h.splice(+t.dataset.i, 1); frigo.have = h; updateFrigo(); return; }
   if (a === 'frigo-clear') { frigo.have = []; updateFrigo(); return; }
@@ -342,6 +392,7 @@ document.addEventListener('change', e => {
 });
 document.addEventListener('input', e => {
   if (e.target.id === 'q') { state.q = e.target.value; updateHome(); }
+  if (e.target.id === 'cq') { const c = catOf(location.hash.slice(4)); fstate(c.id).q = e.target.value; updateCategory(c); }
 });
 // Image manquante ou illisible : repli sur l'emoji.
 document.addEventListener('error', e => {
@@ -356,11 +407,14 @@ function route() {
   const m = h.match(/^#\/r\/(.+)$/);
   const r = m && RECIPES.find(x => x.id === decodeURIComponent(m[1]));
   const mt = h.match(/^#\/astuces\/(.+)$/);
+  const mc = h.match(/^#\/c\/(.+)$/);
+  const cat = mc && CATS.find(x => x.id === decodeURIComponent(mc[1]));
   const th = mt && TIPS.find(x => x.id === decodeURIComponent(mt[1]));
   if (r) { current = r; renderRecipe(r); }
   else {
     current = null; if (wakeLock) setWake(false);
     if (th) renderTips(th);
+    else if (cat) renderCategory(cat);
     else if (h === '#/frigo') renderFrigo();
     else renderHome();
   }

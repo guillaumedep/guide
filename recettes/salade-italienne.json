@@ -2,6 +2,7 @@
   "id": "salade-italienne",
   "title": "Salade légère à l’italienne",
   "cat": "entree",
+  "sous": ["salade", "viande"],
   "emoji": "🧀",
   "image": null,
   "tags": ["Salade", "Sans cuisson"],

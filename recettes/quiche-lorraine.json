@@ -1,7 +1,8 @@
 {
   "id": "quiche-lorraine",
   "title": "Quiche lorraine",
-  "cat": "viande",
+  "cat": "plat",
+  "sous": ["porc"],
   "emoji": "🥓",
   "image": null,
   "tags": ["Quiche", "Au four"],

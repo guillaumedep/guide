@@ -1,7 +1,8 @@
 {
   "id": "quiche-poireaux",
   "title": "Quiche aux poireaux",
-  "cat": "vegetarien",
+  "cat": "plat",
+  "sous": ["vegetarien"],
   "emoji": "🥧",
   "image": null,
   "tags": ["Quiche", "Au four"],

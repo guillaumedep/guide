@@ -2,6 +2,7 @@
   "id": "taboule-libanais",
   "title": "Le vrai taboulé libanais",
   "cat": "entree",
+  "sous": ["salade", "vegetarien"],
   "emoji": "🌿",
   "image": null,
   "tags": ["Salade", "Végétarien", "Sans cuisson"],

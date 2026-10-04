@@ -1,7 +1,8 @@
 {
   "id": "poulet-au-citron",
   "title": "Poulet au citron",
-  "cat": "viande",
+  "cat": "plat",
+  "sous": ["poulet"],
   "emoji": "🍋",
   "image": null,
   "tags": ["Poulet", "Cocotte"],

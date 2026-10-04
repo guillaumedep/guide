@@ -1,7 +1,8 @@
 {
   "id": "grilled-cheese-americain",
   "title": "Grilled cheese sandwich à l’américaine",
-  "cat": "vegetarien",
+  "cat": "snack",
+  "sous": ["sandwich", "vegetarien"],
   "emoji": "🥪",
   "image": null,
   "tags": ["Sandwich", "Rapide", "Poêle"],

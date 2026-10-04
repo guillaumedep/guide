@@ -1,7 +1,8 @@
 {
   "id": "grilled-cheese-jambon-cornichons-chips",
   "title": "Grilled cheese jambon, cornichons et chips",
-  "cat": "viande",
+  "cat": "snack",
+  "sous": ["sandwich"],
   "emoji": "🥪",
   "image": null,
   "tags": ["Sandwich", "Rapide", "Poêle"],

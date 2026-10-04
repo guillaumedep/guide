@@ -11,8 +11,10 @@ const recipes = readdirSync(new URL('../recettes/', import.meta.url))
   .filter(f => f.endsWith('.json') && !f.startsWith('_'))
   .map(f => JSON.parse(readFileSync(new URL('../recettes/' + f, import.meta.url), 'utf8')));
 
-test('catégories identiques au prototype', () => {
-  assert.deepEqual(S.CATS, JSON.parse(JSON.stringify(P.CATS)));
+test('catégories dans l’ordre demandé', () => {
+  assert.deepEqual(S.CATS.map(c => c.id), ['cocktail', 'entree', 'plat', 'accompagnement', 'snack', 'dessert']);
+  const plat = S.CATS.find(c => c.id === 'plat').facets.map(f => f.id);
+  for (const x of ['boeuf', 'porc', 'veau', 'poulet']) assert.ok(plat.includes(x));
 });
 
 test('recettes issues du prototype inchangées', () => {
@@ -20,8 +22,9 @@ test('recettes issues du prototype inchangées', () => {
   for (const r of P.RECIPES) {
     // Les notes « À savoir » peuvent être allégées (retrait des mentions de source, à ta demande) ;
     // tout le reste doit rester identique, et chaque note restante doit venir du prototype.
-    const { notes, ...rest } = byId[r.id];
-    const { notes: pNotes, ...pRest } = JSON.parse(JSON.stringify(r));
+    // Catégorie (« cat », « sous ») également réorganisée à ta demande.
+    const { notes, cat, sous, ...rest } = byId[r.id];
+    const { notes: pNotes, cat: pCat, ...pRest } = JSON.parse(JSON.stringify(r));
     assert.deepEqual(rest, pRest, r.id);
     for (const n of notes) assert.ok(pNotes.includes(n), `${r.id} : note absente du prototype « ${n} »`);
   }

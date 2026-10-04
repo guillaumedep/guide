@@ -2,6 +2,7 @@
   "id": "flageolets-cuisines",
   "title": "Flageolets cuisinés",
   "cat": "accompagnement",
+  "sous": ["legumineuses"],
   "emoji": "🫘",
   "image": null,
   "tags": ["Légumineuses", "Mijoté"],

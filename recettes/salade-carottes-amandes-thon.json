@@ -2,6 +2,7 @@
   "id": "salade-carottes-amandes-thon",
   "title": "Salade de carottes râpées aux amandes et au thon",
   "cat": "entree",
+  "sous": ["salade", "poisson"],
   "emoji": "🥕",
   "image": null,
   "tags": ["Salade", "Sans cuisson"],

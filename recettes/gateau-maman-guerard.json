@@ -2,6 +2,7 @@
   "id": "gateau-maman-guerard",
   "title": "Gâteau de Maman Guérard",
   "cat": "dessert",
+  "sous": ["chocolat", "gateau"],
   "emoji": "🍫",
   "image": null,
   "tags": ["Gâteau", "Chocolat", "Au four"],

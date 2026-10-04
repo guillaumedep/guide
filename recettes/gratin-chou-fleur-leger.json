@@ -2,6 +2,7 @@
   "id": "gratin-chou-fleur-leger",
   "title": "Gratin de chou-fleur léger",
   "cat": "accompagnement",
+  "sous": ["legumes"],
   "emoji": "🥦",
   "image": null,
   "tags": ["Gratin", "Au four", "Cocotte-minute"],

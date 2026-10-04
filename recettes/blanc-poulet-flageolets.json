@@ -1,7 +1,8 @@
 {
   "id": "blanc-poulet-flageolets",
   "title": "Blanc de poulet émincé aux flageolets",
-  "cat": "viande",
+  "cat": "plat",
+  "sous": ["poulet"],
   "emoji": "🍗",
   "image": null,
   "tags": ["Poulet", "Mijoté"],

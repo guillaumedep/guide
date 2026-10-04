@@ -1,7 +1,8 @@
 {
   "id": "flan-thon-coulis-poireau",
   "title": "Flan de thon au coulis de poireau",
-  "cat": "poisson",
+  "cat": "plat",
+  "sous": ["poisson"],
   "emoji": "🐟",
   "image": null,
   "tags": ["Flan", "Au four", "Bain-marie"],

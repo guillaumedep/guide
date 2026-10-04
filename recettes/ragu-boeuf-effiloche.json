@@ -1,7 +1,8 @@
 {
   "id": "ragu-boeuf-effiloche",
   "title": "Ragù de bœuf effiloché et pasta maison",
-  "cat": "viande",
+  "cat": "plat",
+  "sous": ["boeuf"],
   "emoji": "🍝",
   "image": null,
   "tags": ["Pâtes", "Mijoté", "Au four"],
