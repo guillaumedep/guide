@@ -1,0 +1,65 @@
+{
+  "id": "gateau-maman-guerard",
+  "title": "Gâteau de Maman Guérard",
+  "cat": "dessert",
+  "emoji": "🍫",
+  "image": null,
+  "tags": ["Gâteau", "Chocolat", "Au four"],
+  "source": "Livre (page photographiée)",
+  "base": 6,
+  "baseNote": "Le livre indique 6 à 8 personnes : base de 6 retenue.",
+  "total": "1 h 15",
+  "times": [
+    { "l": "Préparation", "v": "15 min" },
+    { "l": "Cuisson", "v": "1 h" },
+    { "l": "Four", "v": "130 °C (th. 2-3)" }
+  ],
+  "groups": [
+    {
+      "t": "Le gâteau et sa crème",
+      "items": [
+        { "id": "g1", "n": "chocolat Nestlé Dessert", "qty": 280, "u": "g", "hint": "Soit 1 tablette ½ pour 6 personnes." },
+        { "id": "g2", "n": "beurre", "qty": 280, "u": "g" },
+        { "id": "g3", "n": "sucre semoule", "qty": 280, "u": "g" },
+        { "id": "g4", "n": "œuf entier, blanc et jaune séparés", "np": "œufs entiers, blancs et jaunes séparés", "qty": 8, "r": "w", "hint": "Annotation manuscrite. Le livre imprime 9 jaunes et 5 blancs." },
+        { "id": "g5", "n": "sel", "fixed": "1 petite pincée" },
+        { "id": "g6", "n": "beurre et farine pour le moule", "fixed": "un peu" },
+        { "id": "g7", "n": "rhum", "qty": 4, "u": "càs", "opt": true, "hint": "Version adulte proposée par le livre : imbiber le gâteau avant de le napper." }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "ph": "Préparation",
+      "items": [
+        "Préchauffer le four à 130 °C (th. 2-3).",
+        "Couper le chocolat en morceaux et le mettre dans une petite casserole. Ajouter le beurre, également en morceaux, et les faire fondre au bain-marie : verser de l’eau dans un récipient à bords hauts ou dans une grande casserole, sur feu moyen. Quand l’eau frémit, y poser la petite casserole de chocolat.",
+        "L’eau, à tout petits bouillons, fait fondre doucement le chocolat et le beurre. Une fois le mélange fondu, le remuer à la cuillère en bois.",
+        "Dans un saladier, battre les jaunes d’œufs et le sucre jusqu’à ce que le mélange blanchisse et s’allège. Ajouter le chocolat et le beurre fondus et remuer énergiquement.",
+        "Dans un autre saladier, monter les blancs en neige au batteur électrique en incorporant une petite pincée de sel. Quand ils sont montés, les mélanger à la préparation au chocolat en soulevant la pâte de bas en haut."
+      ]
+    },
+    {
+      "ph": "Cuisson",
+      "items": [
+        "Beurrer le moule, le fariner légèrement, puis le remplir aux 2/3 avec ce mélange. Conserver le reste de la préparation à température ambiante : c’est la crème qui nappera le gâteau.",
+        "Enfourner et laisser cuire environ 1 heure."
+      ]
+    },
+    {
+      "ph": "Finition",
+      "items": [
+        "Quand le gâteau est cuit, le démouler et le laisser refroidir sur la grille à pâtisserie.",
+        "Le napper du restant de la crème au chocolat, puis le poser sur un plat à gâteau et servir."
+      ]
+    }
+  ],
+  "notes": [
+    "Source : page de livre photographiée. Le titre du livre et l’auteur ne sont pas visibles sur la photo.",
+    "Œufs : la recette suit l’annotation manuscrite (8 œufs entiers). Le livre imprime 9 jaunes et 5 blancs.",
+    "Matériel : batteur électrique, une grande et une petite casserole, grille à pâtisserie, moule à manqué de 24 cm de diamètre. Le moule correspond à la recette de base : si tu changes beaucoup le nombre de personnes, adapte la taille du moule et surveille la cuisson.",
+    "Version adulte selon le livre : imbiber le gâteau de 4 cuillerées à soupe de rhum avant de le recouvrir de crème au chocolat. Il se conserve alors presque une semaine au réfrigérateur.",
+    "Pour la technique des blancs en neige, le livre renvoie à sa recette de mousse au chocolat (non fournie).",
+    "Les temps de cuisson ne changent pas automatiquement avec le nombre de personnes."
+  ]
+}
